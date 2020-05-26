@@ -1,0 +1,73 @@
+<div class="bg-light lter b-b wrapper-md">
+  <!-- <button class="btn m-b-xs btn-sm btn-primary btn-addon pull-right" ui-sref="app.setting.layout"><i class="fa fa-long-arrow-left"></i>Back</button> -->
+  <h1 class="m-n font-thin h3">Menu Tambahan</h1>
+</div>
+<div class="wrapper-md" ng-controller="MenuTambahan">
+  <div class="row">    
+    <script type="text/ng-template" id="myModalContent.html">
+      <div ng-include="'tpl/front/modal.html'"></div>
+    </script>
+    <script type="text/ng-template" id="modal_menu_footer.html">
+      <div ng-include="'tpl/front/menu_footer.html'"></div>
+    </script>
+    <script type="text/ng-template" id="modal_footer.html">
+      <div ng-include="'tpl/front/footer.html'"></div>
+    </script>
+    <div class="col-md-6">       
+        <accordion close-others="oneAtATime">
+          
+          <accordion-group is-open="status.menufooter" class="b-info">
+              <accordion-heading>
+                  Menu Tambahan<i class="pull-right fa fa-angle-right" ng-class="{'fa-angle-down': status.menufooter, 'fa-angle-right': !status.menufooter}"></i>
+              </accordion-heading>                            
+                <div class="list-group m-t" ">
+                  
+                  <div class="list-group-item" ng-repeat="row in menu_footer">
+                    <div class="radio">
+                        <button class="btn btn-primary btn-sm" ng-click="edit({{row.id}})"><i class="fa fa-edit"></i></button>      
+                        {{row.judul}}                                              
+                        <button class="btn btn-danger btn-sm pull-right" ng-click="delete({{row.id}})"><i class="fa fa-trash"></i></button>                              
+                    </div>                                           
+                  </div>
+                  
+                </div>
+                
+          </accordion-group>      
+        </accordion>                    
+    </div>
+
+    <div class="col-md-6">       
+      <accordion close-others="oneAtATime">
+
+          <br>
+          <h4 class="m-t-xs">Kolom Pilihan</h4>
+        <accordion-group is-open="status.listmenufooter" class="b-info">
+            <accordion-heading>
+                List Menu<i class="pull-right fa fa-angle-right" ng-class="{'fa-angle-down': status.listmenufooter, 'fa-angle-right': !status.listmenufooter}"></i>
+            </accordion-heading>                    
+              <button class="btn m-b-xs btn-sm btn-primary btn-addon" ng-click="klik_sitemap()"><i class="fa fa-plus"></i>Sitemap</button>
+              <button class="btn m-b-xs btn-sm btn-primary btn-addon" ng-click="klik_galeri()"><i class="fa fa-plus"></i>Galeri</button>
+              <button class="btn m-b-xs btn-sm btn-primary btn-addon" ng-click="klik_blog()"><i class="fa fa-plus"></i>Blog</button>
+        </accordion-group>
+
+        <accordion-group is-open="status.custommenufooter" class="b-info">
+            <accordion-heading>
+                Custom Link<i class="pull-right fa fa-angle-right" ng-class="{'fa-angle-down': status.custommenufooter, 'fa-angle-right': !status.custommenufooter}"></i>
+            </accordion-heading>
+            <form  ng-submit="klik_custom_link()" enctype="multipart/form-data" >
+              <div class="input-group m-b">
+                <span class="input-group-addon"><i class="fa fa-paragraph"></i></span>
+                <input type="text" class="form-control" placeholder="judul" name="judul" ng-model="custom.judul">
+              </div>
+              <div class="input-group m-b">
+                <span class="input-group-addon"><i class="fa fa-link"></i></span>
+                <input type="text" class="form-control" placeholder="link" ng-model="custom.link">
+              </div>
+              <button class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="fa fa-plus"></i>Tambah</button>
+            </form>
+        </accordion-group>
+
+      </accordion>            
+    </div>
+
+</div>

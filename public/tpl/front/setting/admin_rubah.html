@@ -1,0 +1,39 @@
+<div class="wrapper-md" ng-controller="AdministratorRubah">  
+  <div class="row">
+    <div class="col-sm-8">
+      <div class="panel panel-default">
+        <div class="panel-heading font-bold"><i class="fa fa-user"></i> Rubah Administrator</div>
+        <div class="panel-body">
+          <form  ng-submit="save()" enctype="multipart/form-data" method="POST" >
+            <div class="form-group m-b">
+              <label for="" class="font-bold m-l-xs">Nama :</label>              
+              <input type="text" class="form-control" placeholder="nama" ng-model="form.name" required="">
+            </div>
+            <div class="form-group m-b">
+              <label for="" class="font-bold m-l-xs">Username :</label>              
+              <input type="text" class="form-control" placeholder="Username" ng-model="form.username" required="">
+            </div>
+            <div class="form-group m-b">
+              <label for="" class="font-bold m-l-xs">Password Baru <small><i>(isi jika ingin mengganti)</i></small> :</label>              
+              
+              <!-- <input type="password" class="form-control" placeholder="Password Lama" name="password Lama" ng-model="form.oldpassword" > -->
+              <input type="password" class="form-control" placeholder="Password Baru" name="Password Baru" ng-model="form.newpassword">
+              <!-- <input type="hidden" class="form-control" placeholder="Password" name="password" ng-model="form.password"> -->
+            </div>                  
+            <div class="line line-dashed b-b line-lg"></div>
+            <div class="text-right">              
+              <button class="btn btn-warning btn-addon btn-md" ui-sref="app.setting.admin">Batal</button>            
+              <button class="btn btn-success btn-addon btn-md" type="submit" id="submit"><i id="load" class="glyphicon glyphicon-floppy-saved"></i> Simpan</button>
+            </div>
+          </form>
+        </div>
+      </div>
+     
+
+    </div>
+        
+
+  </div>
+
+  
+</div>

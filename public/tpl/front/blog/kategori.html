@@ -1,0 +1,84 @@
+
+<div class="wrapper-md" ng-controller="SemuaKategoriBlog">
+  
+  <div class="row row-sm">    
+    <div class="col-xs-12 col-sm-6 col-md-3" style="padding: 0 5px">
+      <a ui-sref="app.blog.kategori_baru" class="block panel padder-v item" style="background-color: #F8C10D;padding:15px 25px;box-shadow: 0 2px 4px rgba(0,0,0,0.1);min-height: 85px;margin-bottom:10px">
+        <span class="text-white font-thin h3">KATEGORI BLOG BARU</span>
+        <span class="text-white font-thin pull-right"><i class="icon icon-pencil" style="position: relative;top: 12px;font-size: 22px;"></i></span>               
+        <div class="text-white" style="font-size: 15px;font-weight: 300;padding-top: 5px;">membuat kategori blog baru</div>
+      </a>
+    </div>
+  </div>
+
+  <div class="panel panel-default">    
+    <div class="panel-body b-b b-light">
+      <div class=" row">        
+        <div class="col-sm-12 m-b-xs text-center"> 
+          <div class="row">                            
+            <div class="col-md-3 text-left">                        
+              <h3 style="margin-top: 5px;margin-bottom: 25px;"> <i class="icon icon-drawer" style="font-size: 17px;padding-right: 1px;padding-left: 5px;"></i> Kategori Blog</h3>            
+            </div>
+            <div class="col-md-9 text-left">                        
+              Search: <input id="filter" type="text" class="form-control input-sm w-sm inline m-r"/>
+            </div>
+          </div>
+        </div>
+      </div>
+      <table class="table m-b-none" ui-jq="footable" data-filter="#filter" data-page-size="10">
+        
+        <script type="text/ng-template" id="myModalContent.html">
+          <div ng-include="'tpl/front/modal.html'"></div>
+        </script>
+
+        <thead>
+          <tr>
+              <th style="width: 5%">No</th>              
+              
+              <th data-toggle="true">
+                  Judul
+              </th>
+              <th style="width: 20%" class="text-center" data-hide="phone,tablet">
+                  Action
+              </th>
+              <th>
+                Hapus
+              </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="row in kategori | orderBy:'-id'">              
+              <td>{{$index+1}}</td>        
+              
+              <td>{{row.judul}}</td>
+              <td class="text-center">                  
+                  <div class="m-t-sm">  
+                    <a href="#/app/blog/kategori_rubah/{{row.id}}" style="margin-right: 7px">
+                      <span class="btn btn-sm btn-info" style="display: inherit;"><i class="icon icon-note" style="line-height: 25px;"></i> Rubah </span>                    
+                    </a>
+                    <a href="{{url_link}}{{row.slug}}" target="_blank">
+                      <span class="btn btn-sm btn-success" style="display: inherit;"><i class="icon icon-control-play" style="line-height: 25px;"> </i> Lihat </span>                  
+                    </a>          
+                  </div>
+              </td>
+              <td>              
+                  <a data-id="{{row.id}}" onclick="angular.element(this).scope().delete(angular.element(this).scope(this)[0]['dataset']['id'])" style="margin-right: 7px">                
+                    <span class="btn btn-sm btn-danger" style="display: inherit;"><i class="icon icon-trash" style="line-height: 30px;"></i>Hapus</span>                    
+                  </a>
+              </td>
+          </tr>
+          
+        </tbody>
+        <tfoot class="hide-if-no-paging">
+          <tr>
+              <td colspan="5" class="text-center">
+                  <ul class="pagination"></ul>
+              </td>
+          </tr>
+        </tfoot>
+      </table>
+
+    
+    </div>
+  </div>
+</div>

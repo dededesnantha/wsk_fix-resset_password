@@ -1,0 +1,54 @@
+<div class="hbox hbox-auto-xs hbox-auto-sm" >
+  <!-- main -->
+  <div class="col">
+    <style>
+         
+    </style>
+    <!-- main header -->
+    <!-- <div class="bg-light lter b-b wrapper-md">
+      <div class="row">
+        <div class="col-xs-12">
+          <h1 class="m-n font-thin h3 text-black">Dashboard</h1>
+          <small class="text-muted">Selamat Datang</small>
+        </div>        
+      </div>
+    </div> -->
+    <!-- / main header -->
+    <div class="wrapper-md" ng-controller="Dashboard">
+      <!-- stats -->
+      <div class="row">
+        <div class="col-md-12">
+          <div class="row row-sm text-center">
+            
+            <div class="col-xs-6 col-md-2">
+              <a ui-sref="app.ajaran.semua_ajaran" class="block panel padder-v item" style="background-color: #F8C10D;padding: 30px;    box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                <span class="text-white font-thin h4 block"><i class="glyphicon glyphicon-calendar icon "></i></span>                
+                <span class="text-white font-thin h3 block">Tahun Ajaran</span>
+                <span class="bottom text-right w-full">
+                  <span class="text-muted" style="color: #fff;padding-right: 6px;font-size: 13px;font-weight: bold;"> {{count.ajaran}} <i class="icon icon-layers" style="bottom: 0px;font-size: 9px;position: relative;"></i></span>
+                </span>
+              </a>
+            </div>
+           
+            <div class="col-xs-6 col-md-2">
+              <a ui-sref="app.setting.nav" >
+                <div class="panel padder-v item" style="padding: 30px;    box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                  <span class="text-info font-thin h4 block"><i class="icon icon-settings "></i></span>
+                  <div class="text-info font-thin h3 block">Setting</div>                            
+                </div>
+              </a>
+            </div>            
+            
+          </div>
+        </div>
+        <div class="col-md-12">
+          
+        </div>                
+      </div>
+      <!-- / stats -->
+    </div>
+
+  </div>
+  <!-- / main -->
+
+</div>

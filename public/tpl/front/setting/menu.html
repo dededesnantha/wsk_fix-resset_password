@@ -1,0 +1,243 @@
+<div class="bg-light lter b-b wrapper-md">
+  <!-- <button class="btn m-b-xs btn-sm btn-primary btn-addon pull-right" ui-sref="app.setting.layout"><i class="fa fa-long-arrow-left"></i>Back</button> -->
+  <h1 class="m-n font-thin h3">Menu Utama</h1>
+</div>
+<div class="wrapper-md" ng-controller="Menu">
+  <div class="row">
+    
+    <div class="col-md-6">      
+        <accordion close-others="oneAtATime">
+          <script type="text/ng-template" id="myModalContent.html">
+            <div ng-include="'tpl/front/modal.html'"></div>
+          </script>
+          <accordion-group ng-repeat="row in menu" is-open="row.accordion" class="b-info">
+              <accordion-heading>
+                  {{row.judul}}<i class="pull-right fa fa-angle-right" ng-class="{'fa-angle-down': row.accordion, 'fa-angle-right': !row.accordion}"></i>
+              </accordion-heading>
+              <form  ng-submit="save(row,row.id)" enctype="multipart/form-data" method="POST">
+                <div class="form-group">
+                  <label class="col-sm-2 control-label" for="input-id-1">Link</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" ng-model="row.link" readonly="true">
+                  </div>
+                </div>
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label" for="input-id-1">Judul</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" ng-model="row.judul">
+                  </div>
+                </div> 
+                <div class="col-xs-12 text-center">
+                  <div class="line line-dashed b-b line-lg pull-in"></div>
+                  <button class="btn btn-primary btn-addon btn-md pull-right" type="submit"><i class="glyphicon glyphicon-floppy-saved"></i>Simpan</button>
+                  <a class="btn btn-danger btn-sm pull-left" ng-click="delete({{row.id}})"><i class="fa fa-trash"></i></a>
+                  Pindah :
+                  <a class="btn btn-info btn-sm" ng-click="menu_up({{row.id}})" ng-if="!$first"><i class="fa fa-arrow-up"></i></a>
+                  <a class="btn btn-info btn-sm" ng-click="menu_down({{row.id}})" ng-if="!$last"><i class="fa fa-arrow-down"></i></a>
+                </div>
+              </form>
+          </accordion-group>        
+        </accordion>
+    </div>
+
+    <div class="col-md-6">       
+        <accordion close-others="oneAtATime">
+          <br>
+          <h4 class="m-t-xs">Menu Pilihan</h4>
+          <accordion-group is-open="status.page" class="b-info">
+              <accordion-heading>
+                  Page<i class="pull-right fa fa-angle-right" ng-class="{'fa-angle-down': status.page, 'fa-angle-right': !status.page}"></i>
+              </accordion-heading>
+              <form  ng-submit="klik_page()" enctype="multipart/form-data" >
+                <div class="list-group m-t" ">
+                  
+                  <div class="list-group-item" ng-repeat="row in page">
+                    <div class="radio">
+                      <label class="i-checks">
+                        <input type="radio" ng-model="pages.link" name="a" value="{{row.id}}">
+                        <i></i>
+                        {{row.judul}}
+                      </label>
+                    </div>                                           
+                  </div>
+                  
+                </div>
+                <button class="btn m-b-xs btn-sm btn-primary btn-addon" type="sumbit"><i class="fa fa-plus"></i>Tambah</button>
+              </form>
+          </accordion-group>
+
+          <accordion-group is-open="status.kategori" class="b-info">
+              <accordion-heading>
+                  Kategori<i class="pull-right fa fa-angle-right" ng-class="{'fa-angle-down': status.kategori, 'fa-angle-right': !status.kategori}"></i>
+              </accordion-heading>
+              <form  ng-submit="klik_kategori()" enctype="multipart/form-data" >
+                <div class="list-group m-t" ">
+                  
+                  <div class="list-group-item" ng-repeat="row in pkategori">
+                    <div class="radio">
+                      <label class="i-checks">
+                        <input type="radio" ng-model="kategoris.link" name="a" value="{{row.id}}">
+                        <i></i>
+                        {{row.judul}}
+                      </label>
+                    </div>                                           
+                  </div>
+                  
+                  
+                </div>                
+                <button class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="fa fa-plus"></i>Tambah</button>
+              </form>
+          </accordion-group>
+
+          <accordion-group is-open="status.product" class="b-info">
+              <accordion-heading>
+                  Paket Tour<i class="pull-right fa fa-angle-right" ng-class="{'fa-angle-down': status.product, 'fa-angle-right': !status.product}"></i>
+              </accordion-heading>
+              
+                <div class="list-group ">
+                  <div class="panel-body b-b b-light">
+                    <div class=" row">        
+                      <div class="col-sm-12 m-b-xs text-center"> 
+                        <form  ng-submit="load_data()" enctype="multipart/form-data" >
+                          <div class="row">
+
+                            <div class="col-md-6 text-left" style="display: inline-flex;" >                  
+                              <input type="checkbox" ng-model="full_search" name="full_search" id="full_search" hidden="">
+                              <select class=" form-control inline v-middle mb-1" ng-model="form.much" style="margin: 3px;" ng-show="full_search" ng-change="load_data()">
+                                  <option value="5">5</option>
+                                  <option value="10">10</option>
+                                  <option value="25">25</option>
+                                  <option value="50">50</option>                
+                              </select>
+                              <select class=" form-control inline v-middle" ng-model="form.order" ng-change="load_data()" style="margin: 3px;" ng-show="full_search">
+                                  <option value="asc">ASC</option>
+                                  <option value="desc">DESC</option>              
+                              </select>
+                              <select class=" form-control inline v-middle" ng-model="form.field" style="margin: 3px;" ng-options="o.target as o.name for o in field" ng-show="full_search">                  
+                              </select>
+                            </div>
+
+                            <div class="col-md-6 inline v-middle" style="margin-bottom: 3px">
+                              <label for="full_search" class="pull-left" style="    position: relative;top: 10px;right: 3px;color: #23b7e5;border: 1px solid #b7b7b7;padding: 5px 6px;border-radius: 100%;">
+                                <i class="fa fa-search" style="display: flex;position: relative;">
+                                  <i class="fa" ng-class="{'fa-minus-circle':full_search,'fa-plus-circle':!full_search}" style="    position: absolute;background: #fff;border-radius: 100%;right: -1px;top: 0px;font-size: 8px;border: none;">
+                                  </i>
+                                </i>
+                              </label>
+                              <div class="input-group">
+                                <input type="text" class="form-control input-sm btn-rounded" ng-model="form.search" placeholder="Cari..." ng-disabled="form.field == 'all'" style="padding: 20px 28px;font-size: 16px;border-right: 0;">
+                                <span class="input-group-btn">
+                                  <button type="submit" class="btn btn-default btn-sm btn-rounded" type="submit" style="padding: 9px 10px;font-size: 15px;"><i class="fa fa-search"></i></button>
+                                </span>
+                              </div>
+                            </div>
+
+                          </div>
+                        </form>                           
+                      </div>          
+                    </div>
+                  </div>
+                  <form  ng-submit="klik_product()" enctype="multipart/form-data" >
+                    <div class="panel-body b-b b-light">
+                      <div>
+                        <table class="table m-b-none" ui-jq="footable" data-paging="true" data-page-size="100" data-sortable="false">
+                          <thead>
+                            <tr>
+                                <th style="width: 5%">No</th>              
+                                <th style="width: 20%" class="text-center">
+                                    Action
+                                </th>
+                                <th data-toggle="true">
+                                    Judul
+                                </th>                              
+                                <th data-hide="phone">
+                                    Gambar
+                                </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr ng-repeat="row in dataset">              
+                                <td>{{$index+1}}</td>
+                                <td class="text-center">                                
+                                    <div class="radio">
+                                      <label class="i-checks">                                      
+                                        <input type="radio" ng-model="products.link" name="b" value="{{row.id}}">
+                                        <i></i>
+                                      </label>
+                                    </div>                                                                           
+                                </td>                              
+                                <td>{{row.judul}}</td>                                                               
+                                <td><img ng-src="{{gambar}}{{row.gambar}}" style="width: 100px">                                
+                                </td>
+                            </tr>
+                            <tr ng-if="dataset.length === 0">
+                              <td colspan="4" class="text-center">
+                                No data found !
+                              </td>
+                            </tr>
+                            <tr ng-show="load === true">          
+                              <td colspan="4" class="text-center">
+                                <i class="fa fa-circle-o-notch fa-spin"></i>
+                              </td>
+                            </tr>
+                            
+                          </tbody>
+                          <tfoot style="display: none;margin: 10px">
+                            <tr>            
+                                <td colspan="4" class="text-center">
+
+                                    <pagination direction-links="false" boundary-links="true" total-items="totalItems" ng-model="currentPage" class="m-t-none m-b"></pagination>
+                                </td>
+                            </tr>
+                          </tfoot>        
+                        </table>
+                         <div class="line line-dashed b-b line-lg" ng-show="totalItems > form.much"></div>
+                          <div class="text-center row" ng-show="totalItems > form.much">
+                            <div class="col-md-12">    
+                              <pagination boundary-links="true" total-items="totalItems" ng-model="currentPage" class="m-t-none m-b" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;" max-size="10" items-per-page="form.much" ng-click="load_data(currentPage,'paging')"></pagination>
+                            </div>
+                          </div>
+
+                      </div>
+                    </div>
+                    <button class="btn m-b-xs btn-sm btn-primary btn-addon" type="submit" ><i class="fa fa-plus"></i>Tambah</button>
+
+                    </form>
+                </div>                
+          </accordion-group>
+
+          <accordion-group is-open="status.custom_link" class="b-info">
+              <accordion-heading>
+                  Custom Link<i class="pull-right fa fa-angle-right" ng-class="{'fa-angle-down': status.custom_link, 'fa-angle-right': !status.custom_link}"></i>
+              </accordion-heading>              
+              <form  ng-submit="klik_custom_link()" enctype="multipart/form-data" >
+                <div class="form-group m-b">
+                  <label for="" class="font-bold m-l-xs">Judul :</label>                  
+                  <input type="text" class="form-control" placeholder="judul" name="judul" ng-model="custom.judul">
+                </div>
+                <div class="form-group m-b">
+                  <label for="" class="font-bold m-l-xs">Link :</label>                  
+                  <input type="text" class="form-control" placeholder="link" ng-model="custom.link">
+                </div>
+                <button class="btn m-b-xs btn-sm btn-primary btn-addon"><i class="fa fa-plus"></i>Tambah</button>
+              </form>
+          </accordion-group>
+
+          <accordion-group is-open="status.blog" class="b-info">
+              <accordion-heading>
+                  Home/Blog/Kontak/Gallery/Booking/Review<i class="pull-right fa fa-angle-right" ng-class="{'fa-angle-down': status.blog, 'fa-angle-right': !status.blog}"></i>
+              </accordion-heading>              
+              <button class="btn m-b-xs btn-sm btn-primary btn-addon" ng-click="klik_home()"><i class="fa fa-plus"></i>Home</button>
+              <button class="btn m-b-xs btn-sm btn-primary btn-addon" ng-click="klik_blog()"><i class="fa fa-plus"></i>Blog</button>
+              <button class="btn m-b-xs btn-sm btn-primary btn-addon" ng-click="klik_kontak()"><i class="fa fa-plus"></i>Kontak</button>
+              <button class="btn m-b-xs btn-sm btn-primary btn-addon" ng-click="klik_gallery()"><i class="fa fa-plus"></i>Gallery</button>
+              <button class="btn m-b-xs btn-sm btn-primary btn-addon" ng-click="klik_booking()"><i class="fa fa-plus"></i>Booking</button>
+              <button class="btn m-b-xs btn-sm btn-primary btn-addon" ng-click="klik_review()"><i class="fa fa-plus"></i>Review</button>
+          </accordion-group>
+
+        </accordion>        
+            
+    </div>
+
+</div>

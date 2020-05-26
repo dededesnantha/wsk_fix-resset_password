@@ -1,0 +1,27 @@
+<div class="hbox hbox-auto-xs hbox-auto-sm" >    
+    <div class="col">    
+        <div class="wrapper-md" ng-controller="HiddenTools">    
+            <div class="row">
+                <div class="col-md-4">            
+                    <div class="panel panel-default">
+                        <div class="panel-heading font-bold">Daftar Tag</div>
+                        <div class="panel-body">               
+                            <div class="text-center">
+                                <button class="btn btn-primary btn-md" ng-disabled="load" type="button"  ng-click="download_keyword()">Perbarui Kata Kunci <i ng-show="load" class="fa fa-refresh fa-spin"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="panel panel-default">
+                        <div class="panel-heading font-bold">Template Admin</div>
+                        <div class="panel-body">               
+                            <div class="text-center">
+                                <button class="btn btn-primary btn-md" ng-disabled="load_A" type="button"  ng-click="updagrade_admin()">Perbarui Admin <i ng-show="load_A" class="fa fa-refresh fa-spin"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

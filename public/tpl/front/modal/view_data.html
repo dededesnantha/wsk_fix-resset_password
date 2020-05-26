@@ -1,0 +1,363 @@
+<style type="text/css" media="screen">
+  table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  text-transform: capitalize;
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+<div class="modal-header">
+    <h3 class="modal-title"> Detail Mahasiswa Baru</h3>
+</div>
+<!-- <div class="modal-body" >    
+    <div>     
+        <h4>No Registrasi : {{items.no_registrasi}}</h4>
+        <h5>Kode : {{items.kode}}</h5>
+        <p>Email : {{items.email}}</p>
+        <p>Nama Lengkap : {{items.nama_lengkap}}</p>
+        <p>Nama Panggilan : {{items.nama_panggilan}}</p>
+        <p>Jenis Kelamin : {{items.jk}}</p>
+        <p>NISN : {{items.nisn}}</p>
+        <img ng-src="image/{{items.gambar_konfirmasi}}" alt="{{items.gambar_konfirmasi}}" />
+    </div>    
+</div> -->
+<table>
+      <tr>
+        <td>No Registrasi</td>
+        <td>{{items.no_registrasi}}</td>
+      </tr>
+      <tr>
+        <td>Kode Resgitrasi</td>
+        <td>{{items.kode}}</td>
+      </tr>
+      <tr>
+        <td>Nama Lengkap</td>
+        <td>{{items.nama_lengkap}}</td>
+      </tr>
+      <tr>
+        <td>Nama Panggilan</td>
+        <td>{{items.nama_panggilan}}</td>
+      </tr>
+      <tr>
+        <td>Jenis Kelamin</td>
+        <td>{{items.jk}}</td>
+      </tr>
+      <tr>
+        <td>NISN</td>
+        <td>{{items.nisn}}</td>
+      </tr>
+      <tr>
+        <td>NIK</td>
+        <td>{{items.NIK}}</td>
+      </tr>
+      <tr>
+        <td>No.KK</td>
+        <td>{{items.no_kk}}</td>
+      </tr>
+      <tr>
+        <td>Hobby</td>
+        <td>{{items.hobby}}</td>
+      </tr>
+      <tr>
+        <td>Tempat Lahir</td>
+        <td>{{items.tempat_lahir}}</td>
+      </tr>
+      <tr>
+        <td>Tanggal Lahir</td>
+        <td>{{items.tanggal_lahir}}</td>
+      </tr>
+      <tr>
+        <td>No Akta</td>
+        <td>{{items.no_akta}}</td>
+      </tr>
+      <tr>
+        <td>Berkebutuhan Khusus</td>
+        <td>{{items.berkebutuhan_khusus}}</td>
+      </tr>
+      <tr>
+        <td>Asal Sekolah</td>
+        <td>{{items.asal_sekolah}}</td>
+      </tr>
+      <tr>
+        <td>Alamat Sekolah</td>
+        <td>{{items.alamat_sekolah}}</td>
+      </tr>
+      <tr>
+        <td>Agama</td>
+        <td>{{items.agama}}</td>
+      </tr>
+      <tr>
+        <td>RT</td>
+        <td>{{items.RT}}</td>
+      </tr>
+      <tr>
+        <td>RW</td>
+        <td>{{items.RW}}</td>
+      </tr>
+      <tr>
+        <td>Tempat Tinggal</td>
+        <td>{{items.tempat_tinggal}}</td>
+      </tr>
+      <tr>
+        <td>Mode Transportasi</td>
+        <td>{{items.transportasi}}</td>
+      </tr>
+      <tr>
+        <td>Kewarganegaraan</td>
+        <td>{{items.kewarganegaraan}}</td>
+      </tr>
+      <tr>
+        <td>Suku Bangsa</td>
+        <td>{{items.suku_bangsa}}</td>
+      </tr>
+      <tr>
+        <td>Anak Ke-</td>
+        <td>{{items.anak_ke}}</td>
+      </tr>
+      <tr>
+        <td>Status Siswa</td>
+        <td>{{items.status_siswa}}</td>
+      </tr>
+      <tr>
+        <td>Beasiswa Yang Pernah Didapat</td>
+        <td>{{items.beasiswa}}</td>
+      </tr>
+      <tr>
+        <td>Jumlah Saudara</td>
+        <td>{{items.saudara}}</td>
+      </tr>
+      <tr>
+        <td>Alamat Rumah</td>
+        <td>{{items.alamat_rumah}}</td>
+      </tr>
+      <tr>
+        <td>Provinsi</td>
+        <td>{{items.provinsi}}</td>
+      </tr>
+      <tr>
+        <td>Kabupaten</td>
+        <td>{{items.kabupaten}}</td>
+      </tr>
+      <tr>
+        <td>Kecamatan</td>
+        <td>{{items.kecamatan}}</td>
+      </tr>
+      <tr>
+        <td>Kode Pos</td>
+        <td>{{items.kode_pos}}</td>
+      </tr>
+      <tr>
+        <td>Lintang</td>
+        <td>{{items.lintang}}</td>
+      </tr>
+      <tr>
+        <td>Bujur</td>
+        <td>{{items.bujur}}</td>
+      </tr>
+      <tr>
+        <td>No Hp Siswa</td>
+        <td>{{items.hpsiswa}}</td>
+      </tr>
+      <tr>
+        <td>No Tlp.Rumah</td>
+        <td>{{items.tlp_rumah}}</td>
+      </tr>
+      <tr>
+        <td>Email</td>
+        <td>{{items.email}}</td>
+      </tr>
+      <tr>
+        <td>Golongan Darah</td>
+        <td>{{items.golongan_darah}}</td>
+      </tr>
+      <tr>
+        <td>Tinggi Badan</td>
+        <td>{{items.tinggi_badan}}</td>
+      </tr>
+      <tr>
+        <td>Berat Badan</td>
+        <td>{{items.berat_badan}}</td>
+      </tr>
+      <tr>
+        <td>Lingkaran Kepala</td>
+        <td>{{items.lingkaran_kepala}}</td>
+      </tr>
+      <tr>
+        <td>Riwayat Penyakit</td>
+        <td>{{items.riwayat_penyakit}}</td>
+      </tr>
+      <tr>
+        <td>Keterangan Lain</td>
+        <td>{{items.keterangan}}</td>
+      </tr>
+      <tr>
+        <td>Ukuran Baju</td>
+        <td>{{items.ukuran_baju}}</td>
+      </tr>
+      <tr>
+        <td>Ukuran Celana</td>
+        <td>{{items.ukuran_celana}}</td>
+      </tr>
+      <tr>
+        <td>Status Pembayaran</td>
+        <td data-value="{{items.status_pembayaran}}"><span style="background-color: #067834;color: #fff;width: 100%;padding: 9px 94px" title="Ditayangkan" ng-if="items.status_pembayaran === 'lunas'">{{items.status_pembayaran}}</span>
+          <span style="background-color: #f05050;color: #fff;width: 100%; padding:9px 94px" title="Ditayangkan" ng-if="items.status_pembayaran === 'belum bayar'">{{items.status_pembayaran}}</span></td>
+      </tr>
+      <tr>
+        <td>Bukti Pembayaran</td>
+        <td><img ng-src="images/{{items.gambar_konfirmasi}}" alt="{{items.gambar_konfirmasi}}" style="max-width: 100%" /></td>
+      </tr>
+    </table>
+    <div style="text-align: center;margin-top: 30px">
+      <h3>Data Nilai Ujian Nasional :</h3>
+    </div>
+    <table>
+      <tr>
+        <td>Bahasa Indonesia</td>
+        <td>{{items.bahasa_indonesia}}</td>
+      </tr>
+      <tr>
+        <td>Matematika</td>
+        <td>{{items.matematika}}</td>
+      </tr>
+      <tr>
+        <td>Bahasa Inggris</td>
+        <td>{{items.bahasa_inggris}}</td>
+      </tr>
+      <tr>
+        <td>Ilmu Pengetahuan Alam</td>
+        <td>{{items.ipa}}</td>
+      </tr>
+    </table>
+    <div style="text-align: center;margin-top: 30px">
+      <h3>Data Prestasi Siswa :</h3>
+    </div>
+    <table>
+      <tr>
+        <td>Nilai Prestasi</td>
+        <td>{{items.nilai_prestasi}}</td>
+      </tr>
+    </table>
+    <div style="text-align: center;margin-top: 30px">
+      <h3>Data Program Keahlian Yang Dipilih :</h3>
+    </div>
+    <table>
+      <tr>
+        <td>Pilih Jurusan</td>
+        <td>{{items.jurusan}}</td>
+      </tr>
+    </table>
+    <div style="text-align: center;margin-top: 30px">
+      <h3>Data Orang Tua/Wali Siswa :</h3>
+    </div>
+    <table>
+      <tr>
+        <td>Nama Ayah</td>
+        <td>{{items.nama_ayah}}</td>
+      </tr>
+      <tr>
+        <td>NIK Ayah</td>
+        <td>{{items.nik_ayah}}</td>
+      </tr>
+      <tr>
+        <td>Pendidikan Ayah</td>
+        <td>{{items.pendidikan_ayah}}</td>
+      </tr>
+      <tr>
+        <td>Tanggal Lahir Ayah</td>
+        <td>{{items.lahir_ayah}}</td>
+      </tr>
+      <tr>
+        <td>Pekerjaan Ayah</td>
+        <td>{{items.pekerjaan_ayah}}</td>
+      </tr>
+      <tr>
+        <td>Penghasilan Ayah</td>
+        <td>{{items.penghasilan_ayah}}</td>
+      </tr>
+      <tr>
+        <td>No Hp.Ayah</td>
+        <td>{{items.hpayah}}</td>
+      </tr>
+      <tr>
+        <td>Berkebutuhan Khusus</td>
+        <td>{{items.penyakit_ayah}}</td>
+      </tr>
+      <tr>
+        <td>Nama Ibu</td>
+        <td>{{items.nama_ibu}}</td>
+      </tr>
+      <tr>
+        <td>NIK Ibu</td>
+        <td>{{items.nik_ibu}}</td>
+      </tr>
+      <tr>
+        <td>Pendidikan Ibu</td>
+        <td>{{items.pendidikan_ibu}}</td>
+      </tr>
+      <tr>
+        <td>Pekerjaan Ibu</td>
+        <td>{{items.pekerjaan_ibu}}</td>
+      </tr>
+      <tr>
+        <td>Penghasilan Ibu</td>
+        <td>{{items.penghasilan_ibu}}</td>
+      </tr>
+      <tr>
+        <td>No Hp.Ibu</td>
+        <td>{{items.hpibu}}</td>
+      </tr>
+      <tr>
+        <td>Tanggal Lahir Ibu</td>
+        <td>{{ items.lahir_ibu }}</td>
+      </tr>
+      <tr>
+        <td>Berkebutuhan Khusus</td>
+        <td>{{ items.penyakit_ibu }}</td>
+      </tr>
+      <tr>
+        <td>Alamat Orang Tua</td>
+        <td>{{items.alamat_orangtua}}</td>
+      </tr>
+      <tr>
+        <td>Nama Wali</td>
+        <td>{{items.nama_wali}}</td>
+      </tr>
+      <tr>
+        <td>Pendidkan Wali</td>
+        <td>{{items.pendidkan_wali}}</td>
+      </tr>
+      <tr>
+        <td>Pekerjaan Wali</td>
+        <td>{{items.pekerjaan_wali}}</td>
+      </tr>
+      <tr>
+        <td>Penghasilan Wali</td>
+        <td>{{items.penghasilan_wali}}</td>
+      </tr>
+      <tr>
+        <td>No Hp.Wali</td>
+        <td>{{items.hpwali}}</td>
+      </tr>
+      <tr>
+        <td>Alamat Wali</td>
+        <td>{{items.alamat_wali}}</td>
+      </tr>
+      <tr>
+        <td>Status Asuh</td>
+        <td>{{items.status_asuh}}</td>
+      </tr>
+    </table>
+<div class="modal-footer">
+    <button class="btn btn-info" ng-click="cancel()">Tutup</button>
+</div>

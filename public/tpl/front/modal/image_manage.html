@@ -1,0 +1,154 @@
+    <div class="modal-header bg-success">
+        <button type="button" class="btn btn-danger btn-sm pull-right btn-rounded btn-icon" ng-click="cancel()"> 
+            <i class="icon icon-close "></i>
+        </button>
+        <h4 class="modal-title"><i class="glyphicon glyphicon-camera"></i> Gambar</h4>
+    </div>
+    
+    <div class="modal-body">
+        <script type="text/ng-template" id="myModalContent.html">
+            <div ng-include="'tpl/front/modal.html'"></div>
+        </script>
+        <div class="row">
+            <div class="col-md-12" ng-show="form.location === 'Media'">
+                <div class="hbox hbox-auto-xs hbox-auto-sm"  nv-file-drop="" uploader="uploader" filters="queueLimit, customFilter">        
+                    <div class="panel panel-default">                                                    
+                        <div class="bg-light dk b-b panel-body">
+                            <div class="row">      
+                            <div class="col-md-4">                            
+                                <label for="uploads_media" style="width: 100%;background-color: #ff6b6b;box-shadow: 2px 3px 5px rgba(100,100,100,0.3);min-height: 72px;margin-bottom: 0;cursor: pointer;border-radius: 3px;">
+                                <span class="text-white font-thin h3" style="padding:17px 24px;position: absolute;"><i class="icon icon-picture" style=" position: relative;font-size: 30px;  top: 5px;margin-right: 5px"></i> PILIH GAMBAR</span>
+                                </label>
+                                <input id="uploads_media" type="file" nv-file-select="" uploader="uploader" multiple="" accept="image/*"  style="display: none;" />   
+                            </div>  
+                            <br>
+                            </div>
+                        </div>
+                        <div class="wrapper-md" ng-show="uploader.queue.length != 0">
+                            <div class="table-responsive">
+                            <table class="table bg-white-only b-a">
+                                <thead>
+                                    <tr>
+                                        <th width="50%">Name</th>
+                                        <th ng-show="uploader.isHTML5">Size</th>
+                                        <th ng-show="uploader.isHTML5">Progress</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="item in uploader.queue">
+                                        <td><strong>{{ item.file.name }}</strong></td>
+                                        <td ng-show="uploader.isHTML5" nowrap>{{ item.file.size/1024/1024|number:2 }} MB</td>
+                                        <td ng-show="uploader.isHTML5">
+                                            <div class="progress progress-sm m-b-none m-t-xs">
+                                                <div class="progress-bar bg-info" role="progressbar" ng-style="{ 'width': item.progress + '%' }"></div>
+                                            </div>
+                                        </td>
+                                        <td class="text-center">
+                                            <span ng-show="item.isSuccess" class="text-success"><i class="glyphicon glyphicon-ok"></i></span>
+                                            <span ng-show="item.isCancel" class="text-warning"><i class="glyphicon glyphicon-ban-circle"></i></span>
+                                            <span ng-show="item.isError" class="text-danger"><i class="glyphicon glyphicon-remove"></i></span>
+                                        </td>
+                                        <td nowrap>
+                                            <button type="button" class="btn btn-default btn-xs" ng-click="item.remove()">
+                                                Remove
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            </div>                           
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>            
+            <div class="col-md-12">                
+                <button class="btn btn-addon btn-dark m-b-sm" ng-show="form.location !== 'Media'" ng-click="set_location('Media')" >
+                    <i class="fa fa-arrow-left"></i> Media
+                </button>
+                <ul class="breadcrumb bg-white b-a">
+                    <li><a href ng-click="set_location('Media')"><i class="glyphicon glyphicon-home" ></i> Home</a></li>        
+                    <li class="active"> {{form.location}}</li>
+                </ul>
+            </div>
+            <div class="col-md-12 text-right">
+                <div class="form-group">
+                    <select class=" form-control inline v-middle w-xs" ng-model="form.field" style="margin: 3px;" ng-options="o.target as o.name for o in field" ng-change="load_data()">   
+                    </select>
+                    <select class=" form-control inline v-middle mb-1 w-xs" ng-model="form.much" style="margin: 3px;" ng-change="load_data()">
+                        <option value="5">5</option>
+                        <option value="10">10</option>
+                        <option value="25">25</option>
+                        <option value="50">50</option>                
+                    </select>                        
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6 m-b-md" ng-repeat="row in location_list" ng-show="form.location === 'Media'">
+                <div class="text-center" ng-click="set_location(row.name)">
+                    <a href ng-click="set_location(row.name)" class="block">
+                        <i class="glyphicon glyphicon-folder-close badge-empty alert m-b-xs bg-gd" style="font-size:30px"></i>
+                    </a>
+                    <a href ng-click="set_location(row.name)" >
+                        <span class="badge badge-empty badge badge-empty bg-gd text-lg"> {{row.name}}</span>
+                    </a>                    
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="col-md-3 col-sm-4 col-xs-6" ng-repeat="row in dataset">
+                <div class="text-center panel panel-success">                     
+                    <div class="m-sm">
+                        <img ng-src="{{form.image+row.gambar}}"/>
+                    </div>
+                    <div class="panel-heading m-b-sm" >
+                        <span class="bg-gd">{{row.gambar}}</span>
+                    </div>
+                    <div class="text-center m-xs bg-light" style="padding: 5px;">
+                        <div ng-show="do_delete">
+                            <div class="checkbox">
+                                <label class="i-checks">
+                                    
+                                <input type="checkbox" ng-model="del[row.id]" ><i></i>
+                                </label>
+                            </div>                    
+                        </div>
+                        <button class="btn btn-sm btn-icon btn-primary" ng-click="ok(form.image+row.gambar)"><i class="glyphicon glyphicon-ok-sign"></i></button>
+                        <button class="btn btn-sm btn-icon btn-info" ng-click="copy(form.image+row.gambar)"><i class="fa fa-chain"></i></button>
+                        <!-- <button class="btn btn-sm btn-icon btn-danger"><i class="glyphicon glyphicon-trash"></i></button> -->
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 col-sm-12 col-xs-12 text-center " ng-show="load === true">
+                <div class="m-md alert alert-info">
+                    <i  class="fa fa-circle-o-notch fa-spin"></i>                
+                </div>
+            </div>
+            <div class="col-md-12 col-sm-12 col-xs-12 text-center " ng-if="dataset.length === 0">
+            <div class="m-md alert alert-danger">
+                    No Image Found!!
+                </div>
+            </div> 
+            
+        </div>
+    </div>
+    
+    <div class="bg-light text-center padder-v">        
+        <div class="row padder">
+            <div class="col-md-2" ng-show="form.location == 'Media'" style="text-align:left">
+                <div class="checkbox" ng-show="do_delete">
+                    <label class="i-checks">
+                    <input type="checkbox" ng-model="select_all" ng-change="change_select_all(select_all)"><i></i> Pilih Semua
+                    </label> 
+                </div>
+                <button class="btn btn-danger btn-sm" type="button" ng-class="{'btn-danger':!do_delete,'btn-warning':do_delete}" ng-click="set_to_delete()">
+                    <i class="glyphicon show" ng-class="{'glyphicon-trash':!do_delete,'glyphicon-ban-circle':do_delete}"></i>
+                    {{do_delete_text()}}
+                </button>
+                <button class="btn btn-danger btn-sm" type="button" ng-show="do_delete" ng-click="delete_multi()"><i class="glyphicon glyphicon-trash show"></i> Hapus</button>
+            </div>
+            <div ng-class="{'col-md-8':form.location == 'Media','col-md-12':form.location != 'Media'}">
+                <pagination ng-show="totalItems > form.much" boundary-links="true" total-items="totalItems" ng-model="currentPage" class="m-t-none m-b-none" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;" max-size="10" items-per-page="form.much" ng-click="load_data(currentPage)"></pagination>
+            </div>
+        </div>
+    </div>

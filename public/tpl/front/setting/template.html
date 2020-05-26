@@ -1,0 +1,110 @@
+<div class="hbox hbox-auto-xs hbox-auto-sm" >
+  <!-- main -->
+  <div class="col">
+    <div class="wrapper-md" ng-controller="Template">
+      <!-- stats -->
+      <div class="row">
+        <div class="col-md-12">          
+          <!-- <div class="alert alert-success">
+            Template updates are available to you
+          </div> -->
+          <div class="row">
+              <div class="col-md-12">
+                <tabset class="tab-container">                
+                  <tab>
+                    <tab-heading>
+                      <i class="icon icon-drop "></i> Color
+                    </tab-heading>
+                    <div class="row">
+                      <div class="col-md-5">
+                    
+                        
+                        <div class="panel panel-default">
+                          <div class="panel-body">
+                            <button type="button" ng-click="change('color')" class="btn btn-success btn-block" ng-disable="load"> <i class="fa fa-circle-o-notch fa-spin" ng-show="load"></i> Simpan Perubahan</button>
+                          </div>
+                        </div>
+                        <div class="panel panel-default">
+                    
+                          <div class="panel-body">
+                            <!-- <div class="form-group" >                      
+                              <label for="">Semua Warna</label> 
+                              <input colorpicker type="text" ng-model="all_color" ng-change="set_all(all_color)" class="form-control" />                    
+                            </div> -->
+                                                  
+                            <div class="form-group" ng-repeat="(key, row) in part">                      
+                              <label for="">{{row.name}}</label> 
+                              <input colorpicker type="text" ng-model="part[key].color" ng-change="set_gradient(key,part[key].color);part[key].color_select = part[key].color" class="form-control" />
+                              <ngjs-color-picker selected-color="part[key].color_select" gradient="gradient_option[key]" options="option"></ngjs-color-picker>
+                              <input type="text" ng-model="part[key].color_select" class="form-control" style="background: {{part[key].color_select}};color: #eee;">                       
+                            </div>
+
+                          </div>
+                        </div>
+                        <div class="form-group" > 
+                          <button class="btn btn-block btn-primary" type="button" ng-click="default_color()">
+                            <i class="icon icon-magic-wand "></i> Rubah Template Ke Default
+                          </button>
+                        </div>    
+                      
+                      </div>
+                    </div>
+                  </tab>
+                  <tab>
+                    <tab-heading>
+                      <i class="icon icon-layers"></i> Template
+                    </tab-heading>
+
+                    <div class="row">
+                      <div class="col-md-12">                
+                          <div class="col-md-8">
+                            <div class="panel panel-default">
+                              <div class="panel-body">
+                                <button type="button" ng-click="change('template')" class="btn btn-success btn-block" ng-disable="load"> <i class="fa fa-circle-o-notch fa-spin" ng-show="load"></i> Simpan Perubahan</button>
+                              </div>
+                            </div>
+                          </div>
+                      </div>
+                      <div class="col-md-4" ng-repeat="key in data">
+                        <div class="panel panel-default">
+                          <div class="panel-body">
+                            <h2>{{ key.name }}</h2>
+                            <span>{{ key.version  }}</span>
+                            <span class="badge" ng-if="key.status == 'default'">{{ key.status  }}</span>                
+                            <span class="badge bg-warning" ng-if="key.status != 'default'">{{ key.status  }}</span>                
+                            <div class="m-t-md">
+                              <strong>Ganti Template : </strong>
+                              <label class="i-switch i-switch-lg bg-success m-t-xs m-r pull-right">
+                                <input type="radio" name="id" value="{{ key.id }}" ng-model="form.id">
+                                <i></i>
+                              </label>
+                            </div>
+                            
+                            <img ng-src="{{ key.image }}" style="max-width: 100%;padding: 20px" >
+                                                      
+                            <!-- <div class="radio">
+                              <label class="i-checks">
+                                <input type="radio" name="id" value="{{ key.id }}" ng-model="form.id">
+                                <i></i>                  
+                                Select To Change Template
+                              </label>
+                            </div>                         -->
+                            
+                          </div>
+                        </div>                        
+                      </div>
+                      
+                    </div>  
+                  </tab>
+                </tabset>
+              </div>
+          </div>
+        </div>
+      </div>
+      <!-- / stats -->
+    </div>
+
+  </div>
+  <!-- / main -->
+
+</div>

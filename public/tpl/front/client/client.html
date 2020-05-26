@@ -1,0 +1,186 @@
+<div class="wrapper-md" ng-controller="Client">  
+    <div class="col-sm-6">
+      <div class="form-group b b-info">        
+        <div ng-repeat="row in data" class="list-group-item">
+          <button type="button" ng-click="delete({{$index}})" class="btn btn-danger btn-sm" style="margin-right: 10px;"><i class="icon icon-trash"></i></button>
+          <span>
+            {{row.name}} - 
+            {{row.domain}}               
+            <span class="pull-right badge bg-success" ng-show="row.status">Enable</span>
+            <span class="pull-right badge bg-danger" ng-hide="row.status">Disable</span>
+            <label class="i-switch i-switch-lg bg-success m-t-xs m-r pull-right">
+              <input type="checkbox" class="text-center" ng-change="changed($index)" ng-model="row.status" ng-checked="row.status" ng-false-value="0" ng-true-value="1">                
+              <i></i>
+            </label>            
+            
+          </span>
+          <button type="button" ng-click="edit({{$index}})" class="btn btn-info btn-sm" style="margin-left: 10px;"><i class="icon icon-note"></i></button>        
+        </div>
+      </div>
+
+      <accordion close-others="oneAtATime">
+        <accordion-group  is-open="status" class="b-info">
+          <accordion-heading>
+              Tambah Client <i class="pull-right fa fa-angle-right" ng-class="{'fa-angle-down': status, 'fa-angle-right': !status}"></i>
+          </accordion-heading>
+
+          <form  ng-submit="add()" enctype="multipart/form-data" >
+            
+                <div class="form-group m-b">
+                  <label for="" class="font-bold m-l-xs">Nama :</label>
+                  <input type="text" class="form-control" placeholder="Nama" ng-model="form.name">
+                </div>
+                <div class="form-group m-b">
+                  <label for="" class="font-bold m-l-xs">Doamin :</label>
+                  <input type="text" class="form-control" placeholder="domain" ng-model="form.domain">
+                </div>
+                <div class="form-group m-b">
+                  <label for="" class="font-bold m-l-xs">Email :</label>
+                  <input type="text" class="form-control" placeholder="email" ng-model="form.email">
+                </div>
+                <div class="form-group m-b">
+                  <label for="" class="font-bold m-l-xs">Phone :</label>
+                  <input type="text" class="form-control" placeholder="phone" ng-model="form.phone">
+                </div>
+                <div class="form-group m-b">
+                  <label for="" class="font-bold m-l-xs">WhatsApp :</label>
+                  <input type="text" class="form-control" placeholder="whatsapp" ng-model="form.wa">
+                </div>
+                <div class="form-group m-b">
+                  <label for="" class="font-bold m-l-xs">WeChat :</label>
+                  <input type="text" class="form-control" placeholder="wechat" ng-model="form.wechat">
+                </div>
+                <div class="form-group m-b">
+                  <label for="" class="font-bold m-l-xs">KakaoTalk :</label>
+                  <input type="text" class="form-control" placeholder="kakaotalk" ng-model="form.kakaotalk">
+                </div>
+                <div class="form-group m-b">
+                  <label for="" class="font-bold m-l-xs">Viber :</label>
+                  <input type="text" class="form-control" placeholder="viber" ng-model="form.viber">
+                </div>
+                <div class="form-group m-b">
+                  <label for="" class="font-bold m-l-xs">Line :</label>
+                  <input type="text" class="form-control" placeholder="line" ng-model="form.line">
+                </div>
+                <div class="form-group m-b">
+                  <label for="" class="font-bold m-l-xs">Booking Link :</label>
+                  <input type="text" class="form-control" placeholder="line" ng-model="form.booking">
+                </div>
+                <div class="form-group">
+                  <div>
+                    <label for="images" style="width: 100%;background-color: #ff6b6b;box-shadow: 2px 3px 5px rgba(100,100,100,0.3);min-height: 85px;margin-bottom: 10px;cursor: pointer;border-radius: 3px;">
+                      <span class="text-white font-thin h3" style="padding: 24px;position: absolute;"><i class="icon icon-picture" style=" position: relative;font-size: 30px;  top: 5px;margin-right: 5px"></i> PILIH GAMBAR</span>
+                    </label>
+                  </div>
+
+                  <input type="file" id="images" name="file" accept="image/*" onchange="angular.element(this).scope().uploadedFile(this)" style="display:none"/>
+
+                  <div class="form-group" ng-show="image_source">
+                    <div class="inline bg-white wrapper-sm b-a">
+                      <div class="bg-light">
+                        <img ng-src="{{image_source}}" style="max-width: 100%" />                    
+                      </div>
+                    </div>
+                  </div> 
+                </div>
+                <div class="form-group m-b">
+                  <label for="" class="font-bold m-l-xs">Tayangkan :</label>
+                  <label class="i-switch i-switch-md bg-success m-t-xs m-b-xs ">
+                    <input type="checkbox" value="1" ng-model="form.status">
+                    <i></i>
+                  </label>
+                </div>
+
+                <div class="line line-dashed b-b line-lg "></div>
+                <div class="text-right">              
+                  
+                  <button class="btn btn-success btn-addon btn-md" type="submit"><i class="glyphicon glyphicon-floppy-saved" ></i> Tambah</button>
+                </div>            
+          </form>  
+        </accordion-group>
+      </accordion>
+    </div>
+
+    <div class="col-sm-6" ng-if="form_up.lenght !== 0">
+      <form  ng-submit="update()" enctype="multipart/form-data" >
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            Update
+          </div>
+          <div class="panel-body">
+            <div class="form-group m-b">
+              <label for="" class="font-bold m-l-xs">Nama :</label>
+              <input type="text" class="form-control" placeholder="Nama" ng-model="form_up.name">
+            </div>
+            <div class="form-group m-b">
+              <label for="" class="font-bold m-l-xs">Doamin :</label>
+              <input type="text" class="form-control" placeholder="domain" ng-model="form_up.domain">
+            </div>
+            <div class="form-group m-b">
+              <label for="" class="font-bold m-l-xs">Email :</label>
+              <input type="text" class="form-control" placeholder="email" ng-model="form_up.email">
+            </div>
+            <div class="form-group m-b">
+              <label for="" class="font-bold m-l-xs">Phone :</label>
+              <input type="text" class="form-control" placeholder="phone" ng-model="form_up.phone">
+            </div>
+            <div class="form-group m-b">
+              <label for="" class="font-bold m-l-xs">WhatsApp :</label>
+              <input type="text" class="form-control" placeholder="whatsapp" ng-model="form_up.wa">
+            </div>
+            <div class="form-group m-b">
+              <label for="" class="font-bold m-l-xs">WeChat :</label>
+              <input type="text" class="form-control" placeholder="wechat" ng-model="form_up.wechat">
+            </div>
+            <div class="form-group m-b">
+              <label for="" class="font-bold m-l-xs">KakaoTalk :</label>
+              <input type="text" class="form-control" placeholder="kakaotalk" ng-model="form_up.kakaotalk">
+            </div>
+            <div class="form-group m-b">
+              <label for="" class="font-bold m-l-xs">Viber :</label>
+              <input type="text" class="form-control" placeholder="viber" ng-model="form_up.viber">
+            </div>
+            <div class="form-group m-b">
+              <label for="" class="font-bold m-l-xs">Line :</label>
+              <input type="text" class="form-control" placeholder="line" ng-model="form_up.line">
+            </div>
+            <div class="form-group m-b">
+              <label for="" class="font-bold m-l-xs">Booking Link :</label>
+              <input type="text" class="form-control" placeholder="line" ng-model="form_up.booking">
+            </div>
+            <div class="form-group">
+              <div>
+                <label for="imagess" style="width: 100%;background-color: #ff6b6b;box-shadow: 2px 3px 5px rgba(100,100,100,0.3);min-height: 85px;margin-bottom: 10px;cursor: pointer;border-radius: 3px;">
+                  <span class="text-white font-thin h3" style="padding: 24px;position: absolute;"><i class="icon icon-picture" style=" position: relative;font-size: 30px;  top: 5px;margin-right: 5px"></i> PILIH GAMBAR</span>
+                </label>
+              </div>
+
+              <input type="file" id="imagess" name="files" accept="image/*" onchange="angular.element(this).scope().uploadedUpdate(this)" style="display:none"/>
+
+              <div class="form-group" ng-show="image_source_up">
+                <div class="inline bg-white wrapper-sm b-a">
+                  <div class="bg-light">
+                    <img ng-src="{{image_source_up}}" style="max-width: 100%" />  
+                  </div>
+                </div>
+              </div> 
+            </div>
+            <div class="form-group m-b">
+              <label for="" class="font-bold m-l-xs">Tayangkan :</label>
+              <label class="i-switch i-switch-md bg-success m-t-xs m-b-xs ">
+                <input type="checkbox" value="1" ng-model="form_up.status">
+                <i></i>
+              </label>
+            </div>
+
+            <div class="line line-dashed b-b line-lg "></div>
+            
+            <div class="text-right">            
+              <button class="btn btn-success btn-addon btn-md" type="submit"><i class="glyphicon glyphicon-floppy-saved" ></i> Simpan</button>
+            </div>
+
+          </div>
+        </div>
+      </form>
+    </div>
+</div>

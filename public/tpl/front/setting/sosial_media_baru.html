@@ -1,0 +1,85 @@
+<div class="wrapper-md" ng-controller="SosialMedia">  
+  <div class="row">
+
+    <form  ng-submit="save()" enctype="multipart/form-data" method="POST" >
+    <div class="col-sm-8">
+      <div class="panel panel-default">
+        <div class="panel-heading font-bold"><i class="fa fa-comments"></i> Tambah Sosial Media Baru</div>
+        <div class="panel-body">
+          
+            <div class="form-group m-b">
+              <label for="" class="font-bold m-l-xs">Judul :</label>
+              <input type="text" class="form-control" placeholder="judul" name="judul" ng-model="form.judul">
+            </div>
+            <div class="form-group m-b">
+                <label for="" class="font-bold m-l-xs">Link :</label>
+              <input type="text" class="form-control" placeholder="Link" name="link" ng-model="form.link">
+            </div>                  
+                      
+        </div>
+      </div>
+
+      <div class="panel panel-default">
+        
+        <div class="panel-body">
+          
+            <div class="row">                  
+              <div class="col-md-6">                      
+                <div class="radio">
+                  <label class="i-checks">
+                    <input type="radio" ng-model="form.ikon" value="upload" >
+                    <i></i>
+                    Upload Ikon
+                  </label>
+                </div>
+                
+                  <div>
+                    <label for="images" style="width: 100%;background-color: #ff6b6b;box-shadow: 2px 3px 5px rgba(100,100,100,0.3);min-height: 85px;margin-bottom: 10px;cursor: pointer;border-radius: 3px;">
+                      <span class="text-white font-thin h3" style="padding: 24px;position: absolute;"><i class="icon icon-picture" style=" position: relative;font-size: 30px;  top: 5px;margin-right: 5px"></i> PILIH ICON</span>
+                    </label>
+                  </div>
+      
+                  <input type="file" id="images" name="file" accept="image/*" onchange="angular.element(this).scope().uploadedFile(this)" style="display:none"/>
+      
+                  <div class="form-group" ng-show="image_source">
+                    <div class="inline bg-white wrapper-sm b-a" style="max-width: 50%;">
+                      <div class="bg-light" style="max-width: 100%;">
+                        <img ng-src="{{image_source}}"  style="max-width: 100%;"/>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+              <div class="col-md-6">                
+                <div class="input-group m-b">                                    
+                  <div class="btn-group m-r ng-scope" >
+                    <label class="btn btn-default ng-untouched ng-valid active ng-dirty ng-valid-parse" ng-model="form.ikon" btn-radio="'sm/blog.jpg'" uncheckable=""><img ng-src="{{path}}blog.jpg" width="25"></label>
+                    <label class="btn btn-default ng-untouched ng-valid active ng-dirty ng-valid-parse" ng-model="form.ikon" btn-radio="'sm/fb.jpg'" uncheckable=""><img ng-src="{{path}}fb.jpg" width="25"></label>
+                    <label class="btn btn-default ng-untouched ng-valid active ng-dirty ng-valid-parse" ng-model="form.ikon" btn-radio="'sm/gplus.jpg'" uncheckable=""><img ng-src="{{path}}gplus.jpg" width="25"></label>
+                    <label class="btn btn-default ng-untouched ng-valid active ng-dirty ng-valid-parse" ng-model="form.ikon" btn-radio="'sm/instagram.jpg'" uncheckable=""><img ng-src="{{path}}instagram.jpg" width="25"></label>
+                    <label class="btn btn-default ng-untouched ng-valid active ng-dirty ng-valid-parse" ng-model="form.ikon" btn-radio="'sm/path.jpg'" uncheckable=""><img ng-src="{{path}}path.jpg" width="25"></label>
+                    <label class="btn btn-default ng-untouched ng-valid active ng-dirty ng-valid-parse" ng-model="form.ikon" btn-radio="'sm/pp.jpg'" uncheckable=""><img ng-src="{{path}}pp.jpg" width="25"></label>
+                    <label class="btn btn-default ng-untouched ng-valid active ng-dirty ng-valid-parse" ng-model="form.ikon" btn-radio="'sm/skype.jpg'" uncheckable=""><img ng-src="{{path}}skype.jpg" width="25"></label>
+                    <label class="btn btn-default ng-untouched ng-valid active ng-dirty ng-valid-parse" ng-model="form.ikon" btn-radio="'sm/twitter.jpg'" uncheckable=""><img ng-src="{{path}}twitter.jpg" width="25"></label>
+                    <label class="btn btn-default ng-untouched ng-valid active ng-dirty ng-valid-parse" ng-model="form.ikon" btn-radio="'sm/youtube.jpg'" uncheckable=""><img ng-src="{{path}}youtube.jpg" width="25"></label>
+                    <label class="btn btn-default ng-untouched ng-valid active ng-dirty ng-valid-parse" ng-model="form.ikon" btn-radio="'sm/tripadvisor.png'" uncheckable=""><img ng-src="{{path}}tripadvisor.png" width="25"></label>
+                  </div>                  
+                </div>
+              </div>
+            </div>
+            
+            <div class="line line-dashed b-b line-lg"></div>
+            <div class="text-right">              
+              <button class="btn btn-warning btn-addon btn-md" ui-sref="app.setting.sosial_media">Batal</button>
+              <button class="btn btn-success btn-addon btn-md" type="submit" id="submit"><i id="load" class="glyphicon glyphicon-floppy-saved"></i> Simpan</button>
+            </div>
+          
+        </div>
+      </div>
+
+    </div>
+      </form>
+
+  </div>
+
+  
+</div>

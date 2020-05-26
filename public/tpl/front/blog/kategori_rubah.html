@@ -1,0 +1,59 @@
+<div class="wrapper-md" ng-controller="KategoriBlogRubah">  
+    <form  ng-submit="save()" enctype="multipart/form-data" >
+    <div class="col-sm-8">
+      <div class="panel panel-default">
+        <div class="panel-heading font-bold"><i class="fa fa-pencil"></i> Kategori Rubah</div>
+        <div class="panel-body">
+          
+            <div class="form-group m-b">
+              <label for="" class="font-bold m-l-xs">Judul :</label>              
+              <input type="text" class="form-control" placeholder="judul" ng-model="row.judul" required="">
+            </div>
+            <div class="form-group m-b">
+              <label for="" class="font-bold m-l-xs">Slug :</label>              
+              <input type="text" class="form-control" placeholder="slug" ng-model="row.slug">
+            </div>                  
+            <div class="form-group m-b">
+              <label for="" class="font-bold m-l-xs">Kategori Terkait :</label>              
+              <select name="kategori" class="form-control m-b" ng-model="row.id_parent">
+                <option value="0" ng-selected="true">--  Kategori Terkait --</option>
+                <option ng-repeat="key in kategori" value="{{key.id}}" >{{key.judul}}</option>                                
+              </select>
+            </div>
+            <input type="hidden" ng-model="row.id" >
+            <div class="line line-dashed b-b line-lg pull-in"></div>            
+            <div class="text-right">
+              <button class="btn btn-danger btn-addon btn-sm pull-left" ui-sref="app.blog.kategori" ng-show="cancel" type="button"><i class="glyphicon glyphicon-remove"></i> Yakin?</button>
+              <button class="btn  btn-sm pull-left m-l-xs" ng-show="cancel" ng-click="cancel = false" type="button">Tidak</button>
+              <button class="btn btn-warning btn-sm pull-left" ng-click="cancel = true" ng-show="!cancel" type="button"><i class="fa fa-times"></i> Batal</button>         
+              <button class="btn btn-success btn-addon btn-md" type="submit" id="submit"><i class="glyphicon glyphicon-floppy-saved" id="load"></i>Simpan</button>
+            </div>
+          
+        </div>
+      </div>
+      <accordion close-others="acordion">          
+        <accordion-group is-open="acordion">
+          <accordion-heading><div class="font-bold"><i class="fa fa-rocket"></i> SEO <i class="pull-right fa fa-angle-right" ng-class="{'fa-angle-down': acordion, 'fa-angle-right': !acordion}"></i></div> </accordion-heading>                        
+                <div class="form-group m-b">
+              <label for="" class="font-bold m-l-xs">Judul :</label>                  
+                  <input type="text" class="form-control" placeholder="judul SEO" ng-model="row.seo_judul">
+                </div>
+                <div class="form-group m-b">
+              <label for="" class="font-bold m-l-xs">Kata Kunci :</label>                  
+                  <input type="text" class="form-control" placeholder="Kata Kunci" ng-model="row.seo_kata_kunci">
+                </div>
+                <div class="form-group m-b">
+              <label for="" class="font-bold m-l-xs">Deskripsi :</label>                  
+                  <textarea name="deskripsi" class="form-control" placeholder="Deskripsi SEO" ng-model="row.seo_deskripsi"></textarea>
+                </div>                             
+        </accordion-group>        
+      </accordion>
+
+
+    </div>
+
+    </form>
+  </div>
+
+  
+</div>

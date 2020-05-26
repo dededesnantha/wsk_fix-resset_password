@@ -1,0 +1,37 @@
+<div class="modal-header">
+    <h3 class="modal-title"><i class="glyphicon glyphicon-th-large"></i> Tambah Widget</h3>
+</div>
+<div class="modal-body">    
+    <div ng-repeat="row in data">
+    	<div ng-if="row.data.length !== 1">    			    		    	
+	    	<strong style="font-size: 18px;font-weight: 500;"><i class="icon icon-pin" style="position: relative;top: 3px;padding-right: 9px;font-size: 19px;"></i>	{{row.name}}</strong>	    	
+	    	<div ng-repeat="rows in row.data" >
+	    		<div class="checkbox">
+	              <label class="i-checks" style="padding-left: 35px">
+	                <input type="checkbox" value="{{rows.id}}" ng-model="selected[rows.id]">
+	                <i></i>
+	                {{rows.name}}
+	              </label>
+	            </div>
+	    		
+	    	</div>
+    	</div>
+    	<div ng-if="row.data.length === 1">
+    		<div ng-repeat="rows in row.data" >
+	    		<div class="checkbox">
+	              <label class="i-checks">
+	                <input type="checkbox" value="{{rows.id}}" ng-model="selected[rows.id]">
+	                <i></i>
+	               			    	
+			    		<strong style="font-size: 18px;font-weight: 500;">{{row.name}}</strong>
+			    	 - {{rows.name}}
+	              </label>
+	            </div>	    		
+	    	</div>
+    	</div>
+    </div>    
+</div>
+<div class="modal-footer">                  
+    <button class="btn btn-warning" ng-click="cancel()">Batal</button>
+    <button class="btn btn-success" ng-click="ok()">Lanjut</button>
+</div>

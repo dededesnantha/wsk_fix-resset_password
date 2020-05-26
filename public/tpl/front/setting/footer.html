@@ -1,0 +1,153 @@
+<div class="bg-light lter b-b wrapper-md">
+<!-- <button class="btn m-b-xs btn-sm btn-primary btn-addon pull-right" ui-sref="app.setting.layout"><i class="fa fa-long-arrow-left"></i>Back</button> -->
+  <h1 class="m-n font-thin h3">Footer</h1>
+</div>
+<div class="wrapper-md" ng-controller="Footer">
+  <div class="row">    
+    <script type="text/ng-template" id="myModalContent.html">
+      <div ng-include="'tpl/front/modal.html'"></div>
+    </script>
+    <script type="text/ng-template" id="modal_menu_footer.html">
+      <div ng-include="'tpl/front/menu_footer.html'"></div>
+    </script>
+    <script type="text/ng-template" id="modal_footer.html">
+      <div ng-include="'tpl/front/footer.html'"></div>
+    </script>
+    <div class="col-md-6">
+        <accordion close-others="oneAtATime">                  
+            <accordion-group is-open="status.kolom1" class="b-info">
+                <accordion-heading>
+                    Kolom 1<i class="pull-right fa fa-angle-right" ng-class="{'fa-angle-down': status.kolom1, 'fa-angle-right': !status.kolom1}"></i>
+                </accordion-heading>              
+                <div class="list-group m-t">                  
+                  <div class="list-group-item" ng-repeat="row in footer_kolom1">
+                    <div class="radio">
+                      <button class="btn btn-primary btn-sm" ng-click="footer_edit(1,{{row.id}})"><i class="fa fa-edit"></i></button>      
+                        {{row.judul}}                                              
+                        <button class="btn btn-danger btn-sm pull-right" ng-click="footer_delete(1,{{row.id}})"><i class="fa fa-trash"></i></button>
+                    </div>                                           
+                  </div>                  
+                </div>
+            </accordion-group>          
+            <accordion-group is-open="status.kolom2" class="b-info">
+                <accordion-heading>
+                    Kolom 2<i class="pull-right fa fa-angle-right" ng-class="{'fa-angle-down': status.kolom2, 'fa-angle-right': !status.kolom2}"></i>
+                </accordion-heading>
+                <div class="list-group m-t">                  
+                  <div class="list-group-item" ng-repeat="row in footer_kolom2">
+                    <div class="radio">
+                      <button class="btn btn-primary btn-sm" ng-click="footer_edit(2,{{row.id}})"><i class="fa fa-edit"></i></button>      
+                        {{row.judul}}                                              
+                        <button class="btn btn-danger btn-sm pull-right" ng-click="footer_delete(2,{{row.id}})"><i class="fa fa-trash"></i></button>
+                    </div>                                           
+                  </div>                  
+                </div>
+            </accordion-group>        
+            <accordion-group is-open="status.kolom3" class="b-info">
+                <accordion-heading>
+                    Kolom 3<i class="pull-right fa fa-angle-right" ng-class="{'fa-angle-down': status.kolom3, 'fa-angle-right': !status.kolom3}"></i>
+                </accordion-heading>              
+                <div class="list-group m-t">                  
+                  <div class="list-group-item" ng-repeat="row in footer_kolom3">
+                    <div class="radio">
+                      <button class="btn btn-primary btn-sm" ng-click="footer_edit(3,{{row.id}})"><i class="fa fa-edit"></i></button>      
+                        {{row.judul}}                                              
+                        <button class="btn btn-danger btn-sm pull-right" ng-click="footer_delete(3,{{row.id}})"><i class="fa fa-trash"></i></button>
+                    </div>                                           
+                  </div>                  
+                </div>
+            </accordion-group>                  
+        </accordion>                    
+    </div>
+    <div class="col-md-6">               
+      <accordion close-others="oneAtATimes">
+        <br>
+        <h4 class="m-t-xs">Kolom Pilihan</h4>
+        
+          <accordion-group is-open="status.kolom" class="b-info">
+              <accordion-heading>
+                  Pilih Kolom<i class="pull-right fa fa-angle-right" ng-class="{'fa-angle-down': status.kolom, 'fa-angle-right': !status.kolom}"></i>
+              </accordion-heading>                    
+                <form  ng-submit="klik_footer()" enctype="multipart/form-data" >
+                  <div class="list-group m-t">
+                    <div class="list-group-item" ng-repeat="row in list_kolom">
+                      <div class="radio">
+                        <label class="i-checks">
+                          <input type="radio" ng-model="form.role" name="a" value="{{row.role}}">
+                          <i></i>
+                          {{row.judul}}
+                        </label>
+                      </div>                                                                           
+                    </div>                          
+                  </div>
+                  <div class="form-group m-b">
+                    <label for="" class="font-bold m-l-xs">Posisi :</label>                    
+                    <select name="kategori" class="form-control m-b" required="" ng-model="form.posisi">
+                      <option value="">-- Pilih Kolom --</option>
+                      <option value="1">Kolom 1</option>
+                      <option value="2">Kolom 2</option>
+                      <option value="3">Kolom 3</option>
+                    </select>
+                  </div>
+                  <button class="btn m-b-xs btn-sm btn-primary btn-addon" type="sumbit"><i class="fa fa-plus"></i>Tambah</button>
+                </form>
+          </accordion-group>
+          <accordion-group is-open="status.custommenufooter" class="b-info">
+              <accordion-heading>
+                  Galeri Slider<i class="pull-right fa fa-angle-right" ng-class="{'fa-angle-down': status.custommenufooter, 'fa-angle-right': !status.custommenufooter}"></i>
+              </accordion-heading>
+                <form  ng-submit="klik_footer_slider()" enctype="multipart/form-data" >
+                  <div class="form-group m-b">
+                    <label for="" class="font-bold m-l-xs">Kategori :</label>                    
+                    <select name="kategori" class="form-control m-b" required="" ng-model="galeri.galeri_kategori">
+                      <option value="">-- Pilih Kategori Galeri --</option>
+                      <option ng-repeat="row in all_galeri_kategori" value="{{row.id}}">{{row.judul}}</option>
+                    </select>
+                  </div>
+                  <div class="form-group m-b">
+                    <label for="" class="font-bold m-l-xs">Posisi :</label>                    
+                    <select name="kategori" class="form-control m-b" required="" ng-model="galeri.posisi">
+                      <option value="">-- Pilih Kolom --</option>
+                      <option value="1">Kolom 1</option>
+                      <option value="2">Kolom 2</option>
+                      <option value="3">Kolom 3</option>
+                    </select>
+                  </div>
+                  <button class="btn m-b-xs btn-sm btn-primary btn-addon" type="sumbit"><i class="fa fa-plus"></i>Tambah</button>
+                </form>
+
+          </accordion-group>        
+          <accordion-group is-open="status.kategori_paket_tour" class="b-info">
+              <accordion-heading>
+                  Paket Tour List<i class="pull-right fa fa-angle-right" ng-class="{'fa-angle-down': status.kategori_paket_tour, 'fa-angle-right': !status.kategori_paket_tour}"></i>
+              </accordion-heading>
+                <form  ng-submit="klik_paket_tour()" enctype="multipart/form-data" >
+                  <div class="list-group m-t" >
+                    <div class="list-group-item" ng-repeat="row in kategori_paket_tour">
+                      <div class="radio">
+                        <label class="i-checks">
+                          <input type="radio" ng-model="kategori.paket_tour_kategori" name="b" value="{{row.id}}">
+                          <i></i>
+                          {{row.judul}}
+                        </label>
+                      </div>                                                                           
+                    </div>                 
+                  </div>
+                  <div class="form-group m-b">
+                    <label for="" class="font-bold m-l-xs">Posisi :</label>                    
+                    <select name="kategori" class="form-control m-b" required="" ng-model="kategori.posisi">
+                      <option value="">-- Pilih Kolom --</option>
+                      <option value="1">Kolom 1</option>
+                      <option value="2">Kolom 2</option>
+                      <option value="3">Kolom 3</option>
+                    </select>
+                  </div>
+                  <button class="btn m-b-xs btn-sm btn-primary btn-addon" type="sumbit"><i class="fa fa-plus"></i>Tambah</button>
+                </form>
+
+          </accordion-group>
+        
+      </accordion>           
+    </div>
+
+</div>

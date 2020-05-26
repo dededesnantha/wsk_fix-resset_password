@@ -1,0 +1,42 @@
+
+<div class="modal-header">
+    <h4 class="modal-title"> Edit Data Mahasiswa</h4>
+</div>
+<div class="modal-body">
+  <div class="form-group">
+    <label class="control-label">Nomer Registrasi</label>                  
+    <input type="text" class="form-control" name="no_registrasi" ng-model="items.no_registrasi" disabled>
+  </div>
+  <div class="form-group">
+    <label class="control-label">Kode</label>                  
+    <input type="text" class="form-control" name="kode" ng-model="items.kode" disabled>
+  </div>       
+  <div class="form-group">
+    <label class="control-label">Name</label>                  
+    <input type="text" class="form-control" name="nama_lengkap" ng-model="items.nama_lengkap" disabled>
+  </div>
+  <div class="form-group">
+    <label class="control-label">No.Tlp</label>                  
+    <input type="text" class="form-control" name="hpsiswa" ng-model="items.hpsiswa" disabled>
+  </div>
+  <div class="form-group">
+    <label class="control-label">Alamat Rumah</label>                  
+    <input type="text" class="form-control" name="alamat_rumah" ng-model="items.alamat_rumah" disabled>
+  </div>
+  <div class="form-group">
+    <span>Bukti Pembayaran</span>
+    <br>                  
+    <img ng-src="images/{{items.gambar_konfirmasi}}" alt="{{items.gambar_konfirmasi}}" width="70%" />
+  </div>
+
+  <div class="form-group">
+    <label class="control-label">Status Pembayaran</label>
+    <select id="penyakit" class="form-control" name="status_pembayaran" ng-model="items.status_pembayaran">
+          <option value="belum bayar">Belum Bayar</option>
+          <option value="lunas">Lunas</option>
+    </select>
+</div>
+<div class="modal-footer">                  
+    <button class="btn btn-warning" ng-click="cancel()">Batal</button>
+    <button class="btn btn-success" ng-click="mahasiswa_edit.edit()"> Update</button>
+</div>

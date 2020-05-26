@@ -1,0 +1,175 @@
+<div class="wrapper-md" ng-controller="SemuaProduk">  
+  
+  <div class="row row-sm">    
+    <div class="col-xs-12 col-sm-6 col-md-3" style="padding: 0 5px">
+      <a ui-sref="app.produk.produk_baru" class="block panel padder-v item" style="background-color: #27C24C;padding:15px 25px;box-shadow: 0 2px 4px rgba(0,0,0,0.1);min-height: 85px;margin-bottom:10px">
+        <span class="text-white font-thin h3">PAKET TOUR BARU</span>
+        <span class="text-white font-thin pull-right"><i class="glyphicon glyphicon-briefcase" style="position: relative;top: 12px;font-size: 22px;"></i></span>               
+        <div class="text-white" style="font-size: 15px;font-weight: 300;padding-top: 5px;">membuat paket tour baru</div>
+      </a>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-3" style="padding: 0 5px">
+      <a ui-sref="app.produk.kategori" class="block panel padder-v item" style="background-color: #27C24C;padding:15px 25px;box-shadow: 0 2px 4px rgba(0,0,0,0.1);min-height: 85px;margin-bottom:10px">
+        <span class="text-white font-thin h3">KATEGORI TOUR</span>
+        <span class="text-white font-thin pull-right"><i class="icon icon-drawer" style="position: relative;top: 12px;font-size: 22px;"></i></span>               
+        <div class="text-white" style="font-size: 15px;font-weight: 300;padding-top: 5px;">mengelola kategori paket tour</div>
+      </a>
+    </div>
+  </div>   
+
+  <div class="panel panel-default">  
+    <div class="panel-body b-b b-light">        
+      <div class=" row">        
+        <div class="col-sm-12 m-b-xs text-center"> 
+          <form  ng-submit="load_data()" enctype="multipart/form-data" >
+            <div class="row">                            
+              
+              <div class="col-md-3 text-left">                                            
+                <h3 style="margin-top: 5px;margin-bottom: 25px;"> <i class="glyphicon glyphicon-briefcase" style="font-size: 17px;padding-right: 1px;padding-left: 5px;"></i> Semua Paket Tour</h3>
+                <input type="checkbox" ng-model="full_search" name="full_search" id="full_search" hidden="">
+              </div>
+
+              <div class="col-md-3 text-left" style="display: inline-flex;" ng-show="full_search">                  
+                <select class=" form-control inline v-middle mb-1" ng-model="form.much" style="margin: 3px;" ng-change="load_data()">
+                    <option value="5">5</option>
+                    <option value="10">10</option>
+                    <option value="25">25</option>
+                    <option value="50">50</option>                
+                </select>
+                <select class=" form-control inline v-middle" ng-model="form.order" ng-change="load_data()" style="margin: 3px;" >
+                    <option value="asc">ASC</option>
+                    <option value="desc">DESC</option>              
+                </select>
+                <select class=" form-control inline v-middle" ng-model="form.field" style="margin: 3px;" ng-options="o.target as o.name for o in field" >                  
+                </select>
+              </div>
+
+              <div class="col-md-6 inline v-middle" style="margin-bottom: 3px">
+                <label for="full_search" class="pull-left" style="    position: relative;top: 10px;right: 3px;color: #23b7e5;border: 1px solid #b7b7b7;padding: 5px 6px;border-radius: 100%;">
+                  <i class="fa fa-search" style="display: flex;position: relative;">
+                    <i class="fa" ng-class="{'fa-minus-circle':full_search,'fa-plus-circle':!full_search}" style="position: absolute;background: #fff;border-radius: 100%;right: -1px;top: 0px;font-size: 8px;border: none;">
+                      </i>
+                    </i>
+                  </label>
+                  <label ng-show="form.field != default.field || form.order != default.order || form.search != default.search" ng-click="remove()" class="pull-right" style="position: relative;top: 10px;left: 2px;color: #444;padding: 5px 6px;border-radius: 100%;">
+                    <i class="glyphicon glyphicon-remove-circle" style="display: flex;position: relative;"></i>
+                  </label>
+                <div class="input-group">
+                  <input type="text" class="form-control input-sm btn-rounded" ng-model="form.search" placeholder="Cari..." ng-disabled="form.field == 'all'" style="padding: 20px 28px;font-size: 16px;border-right: 0;">
+                  <span class="input-group-btn">
+                    <button type="submit" class="btn btn-default btn-sm btn-rounded" type="submit" style="padding: 9px 10px;font-size: 15px;"><i class="fa fa-search"></i></button>
+                  </span>
+                </div>
+              </div>
+
+            </div>
+          </form>             
+        </div>          
+      </div>
+      <div>
+        <table class="table m-b-none" ui-jq="footable" data-paging="true" data-page-size="100" data-sortable="false" data-expand-first="true">
+          
+          <script type="text/ng-template" id="myModalContent.html">
+            <div ng-include="'tpl/front/modal.html'"></div>
+          </script>
+
+          <thead>
+            <tr>
+                <th style="width: 5%">No</th>
+                <th style="width: 5%" ng-if="do_delete"><i class="glyphicon glyphicon-trash"></i></th>
+                <th data-toggle="true">
+                    Judul
+                </th>
+                <th data-hide="phone">
+                    Gambar
+                </th>
+                <th data-hide="phone,tablet">
+                    View
+                </th>
+                <th data-hide="phone,tablet">
+                    Kategori
+                </th>
+                <th data-hide="phone">
+                    Status
+                </th>                
+                <th style="width: 20%" class="text-center" data-hide="phone">
+                  Action
+                </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="row in dataset">              
+                <td>{{$index+1}}</td>
+                <td ng-if="do_delete">
+                    <div class="checkbox">
+                      <label class="i-checks">
+                        <input type="checkbox" ng-model="del[row.id]" ><i></i>
+                      </label>
+                    </div>                    
+                </td>
+                <td>{{row.judul}}</td>
+                <td><img ng-src="{{gambar}}{{row.gambar}}" style="width: 100px">
+                  <a data-id="{{row.id}}" onclick="angular.element(this).scope().delete(angular.element(this).scope(this)[0]['dataset']['id'])" style="margin-right: 7px">                
+                    <span class="btn btn-sm btn-danger" style="display: inherit;"><i class="icon icon-trash" style="line-height: 30px;"></i>Hapus</span>                    
+                  </a>
+                </td>
+                <td data-value="{{row.view}}">{{row.view}}</td>   
+                <td data-value="{{row.judul_kategori}}">{{row.kategori}}</td>   
+                <td data-value="{{row.status}}"><span class="label bg-primary" title="Ditayangkan" ng-if="row.status === 1">Ditayangkan</span><span class="label bg-warning" title="Ditayangkan" ng-if="row.status === 0">Draf</span></td>
+                
+                <td class="text-center"> 
+                  <div class="m-t-sm">
+                    <a href="#/app/produk/produk_rubah/{{row.id}}" style="margin-right: 7px">
+                      <span class="btn btn-sm btn-info" style="display: inherit;"><i class="icon icon-note" style="line-height: 25px;"></i> Rubah </span>                    
+                    </a>
+                    <a href="{{url_link+row.slug}}" target="_blank">
+                      <span class="btn btn-sm btn-success" style="display: inherit;"><i class="icon icon-control-play" style="line-height: 25px;"> </i> Lihat </span>                  
+                    </a>          
+                  </div>
+                </td>
+            </tr>
+            <tr ng-if="dataset.length === 0">
+              <td colspan="7" class="text-center">
+                No data found !
+              </td>
+            </tr>
+            <tr ng-show="load === true">          
+              <td colspan="7" class="text-center">
+                <i class="fa fa-circle-o-notch fa-spin"></i>
+              </td>
+            </tr>
+            
+          </tbody>
+          <tfoot style="display: none;margin: 10px">
+            <tr>            
+                <td colspan="7" class="text-center">
+
+                    <pagination direction-links="false" boundary-links="true" total-items="totalItems" ng-model="currentPage" class="m-t-none m-b"></pagination>
+                </td>
+            </tr>
+          </tfoot>        
+        </table>
+        <div class="line line-dashed b-b line-lg" ng-show="dataset.length"></div>
+        <div class="text-center row" ng-show="dataset.length"> 
+          <div class="col-md-12">
+            <div class="pull-left">
+                <div class="checkbox" ng-show="do_delete">
+                  <label class="i-checks">
+                    <input type="checkbox" ng-model="select_all" ><i></i> Pilih Semua
+                  </label> 
+                </div>
+                <button class="btn btn-danger btn-sm" type="button" ng-class="{'btn-danger':!do_delete,'btn-warning':do_delete}" ng-click="set_to_delete()">
+                  <i class="glyphicon show" ng-class="{'glyphicon-trash':!do_delete,'glyphicon-ban-circle':do_delete}"></i>
+                    {{do_delete_text()}}
+                </button>
+                <button class="btn btn-danger btn-sm" type="button" ng-show="do_delete" ng-click="delete_multi()"><i class="glyphicon glyphicon-trash show"></i> Hapus</button>
+              </div>
+            <pagination ng-show="totalItems > form.much" boundary-links="true" total-items="totalItems" ng-model="currentPage" class="m-t-none m-b" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;" max-size="10" items-per-page="form.much" ng-click="load_data('paging')"></pagination>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>

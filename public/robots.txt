@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: /index.php
+Sitemap: https://www.lempuyangtemple.com/sitemap.xml

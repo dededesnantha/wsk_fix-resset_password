@@ -1,0 +1,124 @@
+<!-- list -->
+<ul class="nav">  
+
+  <li ui-sref-active="active" style="background: #fff;border-bottom: 0.5px solid #efefef;box-shadow: 0 0.2px 3px rgba(0,0,0,0.1);" ng-if="$state.includes('app.dashboard')">
+    <a ui-sref="app.dashboard" class="auto">
+      <i class="icon icon-home text-info-dker" style="color: #333"></i>      
+      <span class="font-bold">Beranda</span>
+    </a>
+  </li>  
+  <li ui-sref-active="active" style="background: #fff;border-bottom: 0.5px solid #efefef;box-shadow: 0 0.2px 3px rgba(0,0,0,0.1);" ng-if="
+        $state.includes('app.blog.kategori')
+  ">
+    <a ui-sref="app.blog.semua_blog" class="auto">            
+      <i class="icon icon-control-play" style="transform: rotate(180deg);font-size: 30px;font-weight: bold;margin-top: 0;margin-bottom: -8px"></i>
+      <span class="font-bold">Kembali</span>      
+    </a>
+  </li>
+  <li ui-sref-active="active" style="background: #fff;border-bottom: 0.5px solid #efefef;box-shadow: 0 0.2px 3px rgba(0,0,0,0.1);" ng-if="
+        $state.includes('app.produk.kategori')    
+  ">
+    <a ui-sref="app.produk.semua_produk" class="auto">            
+      <i class="icon icon-control-play" style="transform: rotate(180deg);font-size: 30px;font-weight: bold;margin-top: 0;margin-bottom: -8px"></i>
+      <span class="font-bold">Kembali</span>      
+    </a>
+  </li>
+  <li ui-sref-active="active" style="background: #fff;border-bottom: 0.5px solid #efefef;box-shadow: 0 0.2px 3px rgba(0,0,0,0.1);" ng-if="
+        $state.includes('app.galeri.kategori')    
+  ">
+    <a ui-sref="app.galeri.semua_galeri" class="auto">            
+      <i class="icon icon-control-play" style="transform: rotate(180deg);font-size: 30px;font-weight: bold;margin-top: 0;margin-bottom: -8px"></i>
+      <span class="font-bold">Kembali</span>      
+    </a>
+  </li>
+  <li ui-sref-active="active" style="background: #fff;border-bottom: 0.5px solid #efefef;box-shadow: 0 0.2px 3px rgba(0,0,0,0.1);" ng-if="
+        $state.includes('app.widget.widget_all')    
+  ">
+    <a ui-sref="app.widget.widget_data_all" class="auto">            
+      <i class="icon icon-control-play" style="transform: rotate(180deg);font-size: 30px;font-weight: bold;margin-top: 0;margin-bottom: -8px"></i>
+      <span class="font-bold">Kembali</span>      
+    </a>
+  </li>
+
+  <li ui-sref-active="active" style="background: #fff;border-bottom: 0.5px solid #efefef;box-shadow: 0 0.2px 3px rgba(0,0,0,0.1);" ng-if="
+      $state.includes('app.ajaran.semua_ajaran')
+  ">
+    <a onclick="history.back()" class="auto">        
+      <i class="icon icon-control-play text-info-dker" style="transform: rotate(180deg);color: #333"></i>
+      <span class="font-bold">Kembali</span>      
+    </a>
+  </li>
+
+  <li ui-sref-active="active" style="background: #fff;border-bottom: 0.5px solid #efefef;box-shadow: 0 0.2px 3px rgba(0,0,0,0.1);" ng-if="
+      $state.includes('app.ajaran.ajaran_baru')
+  ">
+    <a onclick="history.back()" class="auto">        
+      <i class="icon icon-control-play text-info-dker" style="transform: rotate(180deg);color: #333"></i>
+      <span class="font-bold">Kembali</span>      
+    </a>
+  </li>
+
+  <li ui-sref-active="active" style="background: #fff;border-bottom: 0.5px solid #efefef;box-shadow: 0 0.2px 3px rgba(0,0,0,0.1);" ng-if="      
+      $state.includes('app.setting.admin')
+  ">
+    <a ui-sref="app.setting.nav" class="auto">           
+      <i class="icon icon-control-play text-info-dker" style="transform: rotate(180deg);color: #333"></i>
+      <span class="font-bold">Kembali</span>      
+    </a>
+  </li>
+  <li ui-sref-active="active" style="background: #fff;border-bottom: 0.5px solid #efefef;box-shadow: 0 0.2px 3px rgba(0,0,0,0.1);" ng-if="    
+      $state.includes('app.setting.menu') ||
+      $state.includes('app.setting.menu_tambahan') ||
+      $state.includes('app.setting.footer') ||
+      $state.includes('app.setting.special_offer') ||
+      $state.includes('app.setting.home_setting') ||
+      $state.includes('app.hidden-tool')
+  ">
+    <a ui-sref="app.setting.layout" class="auto">            
+      <i class="icon icon-control-play" style="transform: rotate(180deg);font-size: 30px;font-weight: bold;margin-top: 0;margin-bottom: -8px"></i>
+      <span class="font-bold">Kembali</span>      
+    </a>
+  </li>
+  <li ui-sref-active="active" style="background: #fff;border-bottom: 0.5px solid #efefef;box-shadow: 0 0.2px 3px rgba(0,0,0,0.1);" >
+    <a href="{{base_url}}" class="auto">           
+      <i class="icon icon-cursor text-info-dker" style="color: #333"></i>
+      <span class="font-bold">View Site</span>      
+    </a>
+  </li>
+
+  <li class="line dk hidden-folded" ng-show="main_navigasi.indexOf('News') != -1"></li>
+  <li ng-class="{active:$state.includes('app.blog')}" ng-show="main_navigasi.indexOf('News') != -1">
+    <a href class="auto">
+      <span class="pull-right text-muted">
+        <i class="fa fa-fw fa-angle-right text"></i>
+        <i class="fa fa-fw fa-angle-down text-active"></i>
+      </span>
+      <i class="icon icon-pencil text-info-dker" style="color: #377EF0"></i>
+      Pdpp
+    </a>
+    <ul class="nav nav-sub dk">          
+      <li ui-sref-active="active" ng-show="navigasi.indexOf('app.blog.all') != -1">
+        <a ui-sref="app.ajaran.semua_ajaran">
+         All
+        </a>
+      </li>      
+      <li ui-sref-active="active" ng-show="navigasi.indexOf('app.blog.new') != -1">
+        <a ui-sref="app.blog.new">
+          <span translate="aside.nav.components.blog.NEW">Add</span>
+        </a>
+      </li>      
+      <li ui-sref-active="active" ng-show="navigasi.indexOf('app.blog.category') != -1">
+        <a ui-sref="app.blog.category">
+          <span translate="aside.nav.components.blog.CATEGORY">Category</span>
+        </a>
+      </li>        
+      <li ui-sref-active="active" ng-show="navigasi.indexOf('app.blog.tag') != -1">
+        <a ui-sref="app.blog.tag">
+          <span translate="aside.nav.components.blog.TAG">Tag</span>
+        </a>
+      </li>              
+    </ul>
+  </li>
+ 
+</ul>
+<!-- / list

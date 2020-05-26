@@ -1,0 +1,100 @@
+  <!-- navbar -->
+  <toaster-container toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></toaster-container>
+  <div data-ng-include=" 'tpl/blocks/header.html' " class="app-header navbar">
+  </div>
+  <!-- / navbar -->
+
+  <!-- menu -->
+  <div data-ng-include=" 'tpl/blocks/aside.html' " class="app-aside hidden-xs {{app.settings.asideColor}}">
+  </div>
+  <!-- / menu -->
+
+  <!-- content -->
+  <div class="app-content">
+    <div ui-butterbar></div>
+    <a href class="off-screen-toggle hide" ui-toggle-class="off-screen" data-target=".app-aside" ></a>
+    <div class="app-content-body fade-in-up" ui-view></div>
+  </div>
+  <!-- /content -->
+
+  <!-- footer -->
+  <div class="menu_mobile app-footer wrapper b-t bg-success" style="position: fixed;padding: 0 20px;padding-bottom: 5px">
+    <button ui-sref="app.dashboard" class="btn btn-rounded btn-lg btn-icon btn-default" style="bottom: 2px;position: absolute;    width: 60px;height: 61px;border: 1.5px solid #dee5e7;border-bottom: 3px solid #ddd;box-shadow: 0px 4px 3px 1px #00000057;"><i class="icon icon-home" style="font-size: 24px;
+    color: #7a847c;"></i></button>    
+   
+    <!-- <button ng-if="$state.includes('app.dashboard')" ui-sref="app.blog.blog_baru" class="btn btn-addon btn-md pull-right" style="margin-top: 6px;background:#F8C10D;color:#fff"><i class="icon  icon-note"></i> Buat Blog</button> -->
+    <a ng-if="$state.includes('app.dashboard')" href="{{base_url}}" class="btn btn-md pull-right" style="margin-top: 6px;background: #fff;color:#272727"><i class="icon icon-cursor" style="display: inline-block;font-size: 14px;font-weight: 600;"></i><span style="position: relative;bottom: 1.5px;font-size: 15px;padding-left: 5px;font-weight: 500;"> View Site</span>  </a>
+
+    <button ng-if="$state.includes('app.blog.kategori')" type="button" class="btn btn-md pull-right" style="margin-top: 6px;background: #fff;color:#272727" ui-sref="app.blog.semua_blog"><span style="position: relative;bottom: 1.5px;font-size: 15px;padding-right: 5px;font-weight: 500;"> Kembali</span> <i class="icon icon-control-play" style="transform: rotate(180deg);display: inline-block;font-size: 15px;font-weight: 900;"></i> </button>
+    <button ng-if="$state.includes('app.produk.kategori')" type="button" class="btn btn-md pull-right" style="margin-top: 6px;background: #fff;color:#272727" ui-sref="app.produk.semua_produk"><span style="position: relative;bottom: 1.5px;font-size: 15px;padding-right: 5px;font-weight: 500;"> Kembali</span> <i class="icon icon-control-play" style="transform: rotate(180deg);display: inline-block;font-size: 15px;font-weight: 900;"></i> </button>
+    <button ng-if="$state.includes('app.galeri.kategori')" type="button" class="btn btn-md pull-right" style="margin-top: 6px;background: #fff;color:#272727" ui-sref="app.galeri.semua_galeri"><span style="position: relative;bottom: 1.5px;font-size: 15px;padding-right: 5px;font-weight: 500;"> Kembali</span> <i class="icon icon-control-play" style="transform: rotate(180deg);display: inline-block;font-size: 15px;font-weight: 900;"></i> </button>
+    <button ng-if="$state.includes('app.widget.widget_all')  " type="button" class="btn btn-md pull-right" style="margin-top: 6px;background: #fff;color:#272727" ui-sref="app.widget.widget_data_all"><span style="position: relative;bottom: 1.5px;font-size: 15px;padding-right: 5px;font-weight: 500;"> Kembali</span> <i class="icon icon-control-play" style="transform: rotate(180deg);display: inline-block;font-size: 15px;font-weight: 900;"></i> </button>
+
+    <button ng-if="
+      $state.includes('app.blog.blog_baru') ||
+      $state.includes('app.blog.blog_rubah') ||
+      $state.includes('app.blog.kategori_baru') ||
+      $state.includes('app.blog.kategori_rubah') ||
+      $state.includes('app.produk.produk_baru') ||
+      $state.includes('app.produk.produk_rubah') ||
+      $state.includes('app.produk.kategori_baru') ||
+      $state.includes('app.produk.kategori_rubah') ||
+      $state.includes('app.page.page_baru') ||
+      $state.includes('app.page.page_rubah') ||
+      $state.includes('app.page.car_charter_baru') ||
+      $state.includes('app.page.car_charter_rubah') ||
+      $state.includes('app.galeri.kategori_baru') ||
+      $state.includes('app.galeri.kategori_rubah') ||
+      $state.includes('app.galeri.rubah') ||
+      $state.includes('app.widget.widget_new') ||
+      $state.includes('app.widget.widget_edit') ||
+      $state.includes('app.widget.widget_data_new') ||
+      $state.includes('app.widget.widget_data_edit') ||
+      $state.includes('app.widget.widget_label') ||
+      $state.includes('app.template') ||
+      $state.includes('app.setting.slider_rubah') ||
+      $state.includes('app.setting.sosial_media_baru') ||
+      $state.includes('app.setting.sosial_media_rubah') ||
+      $state.includes('app.setting.sosial_media_ikon') ||
+      $state.includes('app.setting.kontak_baru') ||
+      $state.includes('app.setting.kontak_rubah') ||
+      $state.includes('app.setting.kontak_ikon') ||
+      $state.includes('app.setting.admin_baru') ||
+      $state.includes('app.setting.admin_rubah') ||
+      $state.includes('app.setting.logo') ||
+      $state.includes('app.setting.gambar') ||
+      $state.includes('app.setting.tag_rubah')" type="button" class="btn btn-md pull-right" style="margin-top: 6px;background: #fff;color:#272727" onclick="history.back()"><span style="position: relative;bottom: 1.5px;font-size: 15px;padding-right: 5px;font-weight: 500;"> Kembali</span> <i class="icon icon-control-play" style="transform: rotate(180deg);display: inline-block;font-size: 15px;font-weight: 900;"></i> </button>
+
+    <button ng-if="
+        $state.includes('app.blog.semua_blog') ||
+        $state.includes('app.produk.semua_produk') || 
+        $state.includes('app.page.semua_page') ||
+        $state.includes('app.galeri.semua_galeri') ||
+        $state.includes('app.setting.nav') || 
+        $state.includes('app.setting.semua_slider') ||
+        $state.includes('app.hidden-tool')
+      " type="button" class="btn btn-md pull-right" style="margin-top: 6px;background: #fff;color:#272727" ui-sref="app.dashboard"><span style="position: relative;bottom: 1.5px;font-size: 15px;padding-right: 5px;font-weight: 500;"> Kembali</span> <i class="icon icon-control-play" style="transform: rotate(180deg);display: inline-block;font-size: 15px;font-weight: 900;"></i> </button>
+
+    <button ng-if="
+      $state.includes('app.widget.widget_data_all') ||
+      $state.includes('app.setting.layout') ||
+      $state.includes('app.setting.sosial_media') ||
+      $state.includes('app.setting.kontak') ||
+      $state.includes('app.setting.admin') ||
+      $state.includes('app.setting.profile_website') ||
+      $state.includes('app.setting.webmaster') ||
+      $state.includes('app.setting.tag')" type="button" class="btn btn-md pull-right" style="margin-top: 6px;background: #fff;color:#272727" ui-sref="app.setting.nav"><span style="position: relative;bottom: 1.5px;font-size: 15px;padding-right: 5px;font-weight: 500;"> Kembali</span> <i class="icon icon-control-play" style="transform: rotate(180deg);display: inline-block;font-size: 15px;font-weight: 900;"></i> </button>
+
+    <button ng-if="
+      $state.includes('app.setting.menu') ||
+      $state.includes('app.setting.menu_tambahan') ||
+      $state.includes('app.setting.footer') ||
+      $state.includes('app.setting.special_offer') ||
+      $state.includes('app.setting.home_setting')" type="button" class="btn btn-md pull-right" style="margin-top: 6px;background: #fff;color:#272727" ui-sref="app.setting.layout"><span style="position: relative;bottom: 1.5px;font-size: 15px;padding-right: 5px;font-weight: 500;"> Kembali</span> <i class="icon icon-control-play" style="transform: rotate(180deg);display: inline-block;font-size: 15px;font-weight: 900;"></i> </button>
+  </div>
+
+
+  <!-- / footer -->
+
+  <!-- <div data-ng-include=" 'tpl/blocks/settings.html' " class="settings panel panel-default">
+  </div> -->

@@ -1,0 +1,60 @@
+<div class="modal-header bg-success">
+    <button type="button" class="btn btn-danger btn-sm pull-right btn-rounded btn-icon" ng-click="cancel()"> 
+        <i class="icon icon-close "></i>
+    </button>
+    <h5 class="modal-title"><i class="glyphicon glyphicon-picture"></i> Sisipkan Gambar</h5>
+</div>
+
+<div class="modal-body">    
+    <div class="row">
+        <div class="col-md-12">
+            <script type="text/ng-template" id="image_manage">
+                <div ng-include="'tpl/front/modal/image_manage.html'"></div>
+            </script>
+            <div class="form-group">
+    			<label>Link Gambar</label>
+                <div class="input-group">
+                    <input type="text" name="kategori" ng-model="form.src" class="form-control">
+                    <span class="input-group-btn">
+                        <button class="btn btn-primary" type="button" ng-click="image_manage()"><i class="glyphicon glyphicon-camera"></i> Pilih Gambar</button>
+                    </span>
+                </div>                
+            </div>
+            <div class="form-group">
+    			<label>Judul</label>                
+                <input type="text" name="judul" ng-model="form.alt" class="form-control">
+            </div>
+            <div class="form-group">
+    			<label>Caption</label>                
+                <input type="text" name="caption" ng-model="form.caption" class="form-control">
+            </div>
+            
+            <div class="form-group">            
+                <label class="i-switch i-switch-md bg-success m-t-xs m-b-xs ">
+                    <input type="checkbox" ng-model="form.dimension">
+                    <i></i> 
+                </label>
+                <span class="pos-rlt" style="left: 7px;bottom: 10.5px;">Tentukan Ukuran</span>
+            </div>
+            
+            <div class="form-group" ng-show="form.dimension">
+                <div class="m-b-xs center">
+                    <label for="">Ukuran</label>
+                </div>
+                <div class="col-sm-6 m-b-sm">                
+                    <input type="number" name="width" class="form-control " ng-model="form.width">                    
+                </div>
+                <div class="col-sm-6 m-b-sm">
+                    <input type="number" name="height" class="form-control col-sm-6" ng-model="form.height">
+                </div>
+                
+            </div> 
+
+        </div>
+    </div>
+</div>
+
+<div class="modal-footer bg-light">                  
+    <button class="btn btn-warning" ng-click="cancel()">Batal</button>
+    <button class="btn btn-success" ng-click="ok()">Sisipkan</button>
+</div>

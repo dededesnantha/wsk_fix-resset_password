@@ -1,0 +1,82 @@
+<div class="bg-light lter b-b wrapper-md">
+  <h1 class="m-n font-thin h3">Home Setting</h1> 
+</div>
+<div class="wrapper-md" ng-controller="HomeSetting">
+  <div class="row">
+
+    <div class="col-md-6">
+      <!-- accordion -->      
+      <div>
+        <accordion close-others="oneAtATime">
+          <script type="text/ng-template" id="myModalContent.html">
+            <div ng-include="'tpl/front/modal.html'"></div>
+          </script>
+          <accordion-group ng-repeat="row in setting" is-open="row.accordion" class="b-info">
+              <accordion-heading>
+                  {{row.name}}<i class="pull-right fa fa-angle-right" ng-class="{'fa-angle-down': row.accordion, 'fa-angle-right': !row.accordion}"></i>
+              </accordion-heading>
+              <div class="col-xs-6">                
+                <h3>Status</h3>
+              </div>
+              <div class="col-xs-6">
+                <br>
+                <label class="i-switch i-switch-lg bg-success m-t-xs m-r">
+                <input type="checkbox" class="text-center" ng-checked="row.status" ng-change="klik_active(row.status,row.id)" 
+                ng-model="row.status" ng-false-value="0" ng-true-value="1">                
+                <i></i>
+                </label>                
+              </div>
+              <div class="line line-dashed b-b line-lg pull-in"></div>
+              <form  ng-submit="save(row,row.id)" enctype="multipart/form-data" method="POST">
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-id-1">Judul</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" ng-model="row.judul">
+                </div>
+              </div>
+              
+              <div class="col-xs-12 list-group m-t" ng-if="row.name === 'Product'">
+                <div ng-repeat="item in pkategori" class="list-group-item">
+                  <div class="checkbox">
+                    <label class="i-checks">
+                      {{item.status}}
+                      <input type="checkbox" ng-change="kategori_klik(item.status,item.id)" ng-model="item.status" ng-checked="item.status" ng-false-value="0" ng-true-value="1">
+                      <i></i>            
+                      {{item.judul}}
+                    </label>
+                    <div class="pull-right">
+                      <a class="btn btn-info btn-sm" ng-click="up({{item.id}})" ng-if="!$first"><i class="fa fa-arrow-up"></i></a>
+                      <a class="btn btn-info btn-sm" ng-click="down({{item.id}})" ng-if="!$last"><i class="fa fa-arrow-down"></i></a>
+                    </div>
+                  </div>
+                </div>
+              </div>          
+              <div class="col-xs-12 text-center">
+                <div class="form-group" ng-if="row.name === 'Transport'">
+                  <div class="checkbox">
+                    <label class="i-checks">
+                      <input type="checkbox" ng-true-value="1" ng-false-value="0" ng-model="row.custom">
+                      <i></i>
+                      Booking
+                    </label>
+                  </div>
+                </div>
+                <div class="line line-dashed b-b line-lg pull-in"></div>
+                <a class="btn btn-danger btn-sm pull-left" ng-click="delete_page({{row.id}})" ng-if="row.name == 'Page'"><i class="fa fa-trash"></i></a>
+                <button class="btn btn-success btn-addon btn-md pull-right" type="submit"><i class="glyphicon glyphicon-floppy-saved"></i>Simpan</button>
+                Pindah :
+                <a class="btn btn-info btn-sm" ng-click="setting_up({{row.id}})" ng-if="!$first"><i class="fa fa-arrow-up"></i></a>
+                <a class="btn btn-info btn-sm" ng-click="setting_down({{row.id}})" ng-if="!$last"><i class="fa fa-arrow-down"></i></a>                
+              </div>
+              </form>
+          </accordion-group>        
+
+        </accordion>        
+        
+      </div>
+      <!-- / accordion -->            
+    </div>  
+
+    </div>
+  </div>
+</div>

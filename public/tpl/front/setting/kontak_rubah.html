@@ -1,0 +1,44 @@
+<div class="wrapper-md" ng-controller="KontakRubah">  
+  <div class="row">
+
+  <form  ng-submit="save()" enctype="multipart/form-data" method="POST" >
+    <div class="col-sm-8">
+      <div class="panel panel-default">
+        <div class="panel-heading font-bold"><i class="fa fa-book"></i> Rubah Kontak</div>
+        <div class="panel-body">
+          
+            <div class="input-group m-b">
+              <span class="input-group-addon"><i class="fa fa-paragraph"></i></span>
+              <input type="text" class="form-control" placeholder="Judul Kontak" ng-model="form.judul">
+            </div>
+            <div class="input-group m-b">
+              <span class="input-group-addon"><i class="fa fa-link"></i></span>
+              <input type="text" class="form-control" placeholder="Kontak Atau ID"  ng-model="form.kontak">
+            </div>
+            <div class="btn-group m-r ng-scope" >
+              <label class="btn btn-default ng-untouched ng-valid active ng-dirty ng-valid-parse" ng-model="form.gambar" btn-radio="'sm/email.png'" uncheckable=""><img ng-src="{{path}}email.png" width="25"></label>
+              <label class="btn btn-default ng-untouched ng-valid active ng-dirty ng-valid-parse" ng-model="form.gambar" btn-radio="'sm/phone.png'" uncheckable=""><img ng-src="{{path}}phone.png" width="25"></label>            
+              <label class="btn btn-default ng-untouched ng-valid active ng-dirty ng-valid-parse" ng-model="form.gambar" btn-radio="'sm/wa.png'" uncheckable=""><img ng-src="{{path}}wa.png" width="25"></label>
+              <label class="btn btn-default ng-untouched ng-valid active ng-dirty ng-valid-parse" ng-model="form.gambar" btn-radio="'sm/wechat.png'" uncheckable=""><img ng-src="{{path}}wechat.png" width="25"></label>
+              <label class="btn btn-default ng-untouched ng-valid active ng-dirty ng-valid-parse" ng-model="form.gambar" btn-radio="'sm/kakaotalk.png'" uncheckable=""><img ng-src="{{path}}kakaotalk.png" width="25"></label>            
+              <label class="btn btn-default ng-untouched ng-valid active ng-dirty ng-valid-parse" ng-model="form.gambar" btn-radio="'sm/viber.png'" uncheckable=""><img ng-src="{{path}}viber.png" width="25"></label>   
+              <label class="btn btn-default ng-untouched ng-valid active ng-dirty ng-valid-parse" ng-model="form.gambar" btn-radio="'sm/line.png'" uncheckable=""><img ng-src="{{path}}line.png" width="25"></label>
+            </div>                  
+            <div class="line line-dashed b-b line-lg"></div>
+            <div class="text-right">               
+              <button class="btn btn-warning btn-addon btn-md" ui-sref="app.setting.kontak">Batal</button>          
+              <button class="btn btn-success btn-addon btn-md" type="submit" id="submit"><i id="load" class="glyphicon glyphicon-floppy-saved"></i> Simpan</button>
+            </div>
+
+        </div>
+      </div>
+    
+    </div>
+    
+
+  </form>
+
+  </div>
+
+  
+</div>

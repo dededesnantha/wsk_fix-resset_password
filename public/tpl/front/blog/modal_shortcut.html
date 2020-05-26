@@ -1,0 +1,36 @@
+<div class="modal-header bg-success">
+    <h4 class="modal-title"><i class="fa fa-key"></i> Pilih Kata Kunci Blog</h4>
+</div>
+<div class="modal-body">    
+    <div class="row">
+    	<div class="col-md-12">
+    		<div class="form-group">    			
+    			<select name="kategori" ng-model="selected.category" class="form-control b-success font-bold" ng-change="select_category(selected.category)">
+					<option value="" disabled="" selected=""><strong>-- Kategori --</strong></option>					
+    				<option value="{{row.id}}" ng-repeat="row in data.category">{{row.name}}</option>    				
+    			</select>
+    		</div>
+			
+    		<div ng-hide="hide_keyword" class="text-center">
+    			<i  class="fa fa-circle-o-notch fa-spin"></i>
+    		</div>
+    		<div class="form-group" ng-show="selected.category && hide_keyword">    			
+    			<select name="" class="form-control b-success font-bold" ng-model="selected.keyword">
+    				<option value="" disabled="" selected=""><strong>-- Keyword --</strong></option>
+    				<option value="{{row.name}}" ng-repeat="row in data.keyword">{{row.name}}</option>
+    			</select>
+			</div>
+			<div class="form-group" ng-show="selected.category && hide_keyword && selected.keyword">
+				<label for="content">Description</label>
+				<textarea class="form-control b-success" name="content" id="content" cols="20" rows="5" ng-model="form.content"></textarea>
+			</div>
+    		<div class="form-group" ng-show="selected.category && hide_keyword">
+    			Tag : <br><span class="badge b-a bg-white text-dark" ng-repeat="row in selected.tag.split(',')" style="margin: 3px;border-radius: 4px;">{{row}}</span>
+    		</div>
+    	</div>
+    </div>
+</div>
+<div class="modal-footer bg-light">                  
+    <button class="btn btn-warning" ng-click="cancel()">Batal</button>
+    <button class="btn btn-success" ng-click="ok()">Lanjut</button>
+</div>

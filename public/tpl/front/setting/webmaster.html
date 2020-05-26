@@ -1,0 +1,93 @@
+<div class="bg-light lter b-b wrapper-md">
+  <h1 class="m-n font-thin h3"><i class="fa fa-globe"></i> WebMaster</h1>
+</div>
+<div class="wrapper-md" ng-controller="ProfileWebsite">
+  <div class="row">
+    <div class="col-sm-8">
+      <div class="panel panel-default">
+        <div class="panel-heading font-bold">Webmaster</div>
+        <div class="panel-body">
+          <form  ng-submit="save()" enctype="multipart/form-data" >            
+            <div class="form-group">
+              <label class="col-sm-2 control-label" for="input-id-1">Google Webmaster</label>
+              <div class="col-sm-10">
+                <textarea ng-model="form.google_webmaster" class="form-control" ></textarea>                                
+              </div>
+            </div>
+            <div class="line line-dashed b-b line-lg pull-in"></div>
+            <div class="form-group">
+              <label class="col-sm-2 control-label" for="input-id-1">Google Analytics</label>
+              <div class="col-sm-10">
+                <textarea ng-model="form.google_analytics" class="form-control" ></textarea>
+              </div>
+            </div>
+            <div class="line line-dashed b-b line-lg pull-in"></div>
+            <div class="form-group">
+              <label class="col-sm-2 control-label" for="input-id-1">Facebook Pixel</label>
+              <div class="col-sm-10">           
+                <textarea ng-model="form.facebook_pixel" class="form-control" ></textarea>
+              </div>
+            </div>
+            <div class="line line-dashed b-b line-lg pull-in"></div>
+            <div class="form-group">
+              <label class="col-sm-2 control-label" for="input-id-1">TripAdvisor</label>
+              <div class="col-sm-10">           
+                <textarea ng-model="form.tripadvisor" class="form-control" ></textarea>
+              </div>
+            </div>
+            <div class="line line-dashed b-b line-lg pull-in"></div>
+            <div class="form-group">
+              <label class="col-sm-2 control-label" for="input-id-1">Google Map</label>
+              <div class="col-sm-10">           
+                <textarea ng-model="form.map" class="form-control" ></textarea>
+              </div>
+            </div>
+            <div class="line line-dashed b-b line-lg pull-in"></div>
+            <div class="form-group">
+              <label class="col-sm-2 control-label" for="input-id-1">Tawk to</label>
+              <div class="col-sm-10">           
+                <textarea ng-model="form.tawk" class="form-control" ></textarea>
+              </div>
+            </div>
+
+            <div class="line line-dashed b-b line-lg"></div>
+            <div class="text-right">              
+              <input type="hidden" ng-model="form.id" />
+              <button class="btn btn-warning btn-addon btn-md" onclick="history.back()" type="button">Kembali</button>
+              <button class="btn btn-success btn-addon btn-md" type="submit"><i class="glyphicon glyphicon-floppy-saved"></i> Simpan</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      
+      <div class="panel panel-default">
+        <div class="panel-heading font-bold">Sisipkan Tag Ke Produk</div>
+        <div class="panel-body">
+        
+          <form  ng-submit="insertion()" enctype="multipart/form-data">           
+            <div class="form-group m-b">
+              <label for="" class="font-bold m-l-xs">Kategori Tour :</label>              
+              <select name="kategori" class="form-control m-b" required="" ng-model="data_tag.kategori">
+                <option value="" ng-selected="true">--  Kategori Tour  --</option>
+                <option ng-repeat="key in kategori" value="{{key.id}}" >{{key.judul}}</option>
+              </select>
+            </div>
+            <div class="form-group m-b">
+              <label for="" class="font-bold m-l-xs">Keyword :</label>              
+              <select name="keyword" class="form-control m-b" required="" ng-model="data_tag.keyword">
+                <option value="" ng-selected="true">--  Keyword  --</option>
+                <option ng-repeat="key in keyword" value="{{key.id}}" >{{key.name}}</option>
+              </select>
+            </div>
+            <div class="text-right">
+              <button class="btn btn-primary btn-md" ng-disabled="loading_tag" type="submit" >Submit <i ng-show="loading_tag" class="fa fa-refresh fa-spin"></i></button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      
+
+    </div>    
+  </div>
+</div>

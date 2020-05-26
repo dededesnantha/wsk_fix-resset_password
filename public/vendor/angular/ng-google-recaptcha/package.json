@@ -1,0 +1,48 @@
+{
+  "_from": "ng-google-recaptcha",
+  "_id": "ng-google-recaptcha@0.1.0",
+  "_inBundle": false,
+  "_integrity": "sha1-rvPVubbabuBrNRcCHZdD1Ubi5NA=",
+  "_location": "/ng-google-recaptcha",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "ng-google-recaptcha",
+    "name": "ng-google-recaptcha",
+    "escapedName": "ng-google-recaptcha",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/ng-google-recaptcha/-/ng-google-recaptcha-0.1.0.tgz",
+  "_shasum": "aef3d5b9b6da6ee06b3517021d9743d546e2e4d0",
+  "_spec": "ng-google-recaptcha",
+  "_where": "C:\\Users\\tayatha-alpha\\Desktop\\New folder",
+  "author": {
+    "name": "Davletov Almir"
+  },
+  "bundleDependencies": false,
+  "dependencies": {},
+  "deprecated": false,
+  "description": "AngularJS module that implements Google's I'm not robot (reCaptcha)",
+  "homepage": "https://github.com/davletovalmir/ng-google-recaptcha",
+  "keywords": [
+    "angular",
+    "angularjs",
+    "google",
+    "recaptcha",
+    "captcha"
+  ],
+  "license": "MIT",
+  "main": "ng-google-recaptcha.js",
+  "name": "ng-google-recaptcha",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "0.1.0"
+}
